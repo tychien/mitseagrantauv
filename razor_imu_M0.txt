@@ -19,4 +19,9 @@
 19. $rostopic echo /heading     to show the heading.
 
 
-I've tried to do all these work including calibration and measuring on the metal desk, so it still drifting after calibration. Then I moved the razor imu to the wood desk and do the works again, the drifting problem has been improved. Trt to avoid the magnetic field distortion by removing the electornic devices and keep the imu away from metal objects would make the drifting problem better. 
+I've tried to do all these work including calibration and measuring on the metal desk, 
+so it still drifting after calibration. 
+Then I moved the razor imu to the wood desk and do the works again, 
+the drifting problem has been improved. 
+Try to avoid the magnetic field distortion by removing the electornic devices 
+and keep the imu away from metal objects would make the drifting problem better. 
