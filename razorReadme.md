@@ -1,9 +1,10 @@
-# Foobar
+# Razor IMU M0 for AUV_LAB
 
-Foobar is a Python library for dealing with word pluralization.
-
+This document is written by Tim Chien. tychien@mit.edu
+Ref http://wiki.ros.org/razor_imu_9dof
 ## Installation
 
+In 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
