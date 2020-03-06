@@ -8,6 +8,11 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
 
 ## Installation & Preparation
 
+1. Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
+1. Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
+    1.   
+1. Plug in the board into the computer port
+
 
 In 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
