@@ -12,7 +12,10 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
 *  Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
     *  and select Razor IMU M0 Board. (url) 
 *  Download [ProcessingIDE](https://processing.org/download/)
-    * Download [EJML](url) library to the Processing sketch book.
+    * Download [EJML](https://github.com/tychien/mitseagrantauv/EJML) library to the Processing sketch book.
+```bash 
+cd ~/sketchbook/libraries
+```
 *  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the catkin_ws/src directory. 
 ```bash 
 cd ~/catkin_ws/src (path to your catkin_ws directory)
