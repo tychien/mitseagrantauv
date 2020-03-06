@@ -2,10 +2,12 @@
 
 This document is written by Tim Chien. tychien@mit.edu
 
-Ref http://wiki.ros.org/razor_imu_9dof
+Here's the [WIKI](http://wiki.ros.org/razor_imu_9dof)
 
+The Board 14001 [Specs](https://www.sparkfun.com/products/14001) 
 
-## Installation & Prepare
+## Installation & Preparation
+
 
 In 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
