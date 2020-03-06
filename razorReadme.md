@@ -31,28 +31,31 @@ sudo chmod 666 ttyACM0
 1.  Type #on in the Seriel Monitor Command Line to enter the magnitude calibration mode and do the same thing as 3.
 1.  Type #on again to get into Gyro calibraion mode, and do the same thing as 3.
 1.  Quit the Serial Monitor and Launch the Processing IDE. 
-
-In 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+1.  Open the Magnetometer Calibration file in catkin_ws/src/razor_imu_9dof/magnetometer_calibration/Processing directory.
+1.  Run the code. It will pop-up a new window with a surphace. If not, then press r to restart.
+1.  Move the razor imu to make the dots cover the surphace in the pop-up window. Press Space to show the calibration value.
+1.  Write the calibration value into my_razor.yaml file. 
+```bash 
+vim ~/catkin_ws/src/razor_imu_9dof/config/my_razor.yaml
+```
+##  Launch the board
 
 ```bash
-pip install foobar
+$ Roslaunch razor_imu_9dof razor-pub.launch 
 ```
 
-## Usage
+Open the second terminal 
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```bash
+$ cd (Path of the convert_to_rpy.py)
+$ python2 convert_to_rpy.py 
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Open the third terminal 
 
-Please make sure to update tests as appropriate.
+```bash
+$ rostopic echo /heading 
+``` 
+if it works well, it'll show the heading 
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
