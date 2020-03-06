@@ -2,7 +2,7 @@
 
 This document is written by Tim Chien. tychien@mit.edu
 
-Here's the [WIKI](http://wiki.ros.org/razor_imu_9dof)
+Here's the Razor IMU official [WIKI](http://wiki.ros.org/razor_imu_9dof)
 
 The Board 14001 [Specs](https://www.sparkfun.com/products/14001) 
 
