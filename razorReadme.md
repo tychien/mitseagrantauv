@@ -70,7 +70,7 @@ Then I moved the razor imu to the wood desk and keep it far away from any electr
 Then, the drifting problem has been resolved. 
 
 It looks quite well like this...
-![deg55]()
-![deg145]()
-![deg235]()
-![deg325]() 
+![deg55](https://github.com/tychien/mitseagrantauv/blob/master/deg55.jpg)
+![deg145](https://github.com/tychien/mitseagrantauv/blob/master/deg145.jpg)
+![deg235](https://github.com/tychien/mitseagrantauv/blob/master/deg235.jpg)
+![deg325](https://github.com/tychien/mitseagrantauv/blob/master/deg325.jpg) 
