@@ -15,7 +15,7 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
     1. Download [EJML](url) library to the Processing sketch book.
 1.  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the catkin_ws/src directory. 
 ```bash 
-cd ~/catkin_ws/src
+cd ~/catkin_ws/src (path to your catkin_ws directory)
 git clone https://github.com/KristofRobot/razor_imu_9dof.git 
 ```
 1.  Download this python file [convert_to_rpy.py](https://github.com/tychien/mitseagrantauv), we will use it later. 
