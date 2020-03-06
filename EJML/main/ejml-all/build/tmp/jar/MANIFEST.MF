@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Created-By: 11.0.6 (Ubuntu)
+Tool: Bnd-4.0.0.201805111645
+Bnd-LastModified: 1583170162463
+Export-Package: org.ejml;version="0.39.0.SNAPSHOT"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Bundle-Vendor: EJML
+Bundle-SymbolicName: org.ejml.all
+Bundle-Version: 0.39.0.SNAPSHOT
+Bundle-Name: ejml-all
+Bundle-DocURL: http://ejml.org/
+

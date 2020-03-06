@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Created-By: 11.0.6 (Ubuntu)
+Tool: Bnd-4.0.0.201805111645
+Bnd-LastModified: 1583170162515
+Export-Package: org.ejml.data;version="0.39.0.SNAPSHOT",org.ejml.dense.b
+ lockd3;version="0.39.0.SNAPSHOT";uses:="org.ejml.data",org.ejml.dense.d
+ ensed2.mult;version="0.39.0.SNAPSHOT";uses:="org.ejml.data",org.ejml.de
+ nse.row.decomposition.bidiagonal;version="0.39.0.SNAPSHOT";uses:="org.e
+ jml.data,org.ejml.simple",org.ejml.dense.row.decomposition.lu;version="
+ 0.39.0.SNAPSHOT";uses:="org.ejml.data,org.ejml.dense.row.decompose.lu",
+ org.ejml.dense.row.decomposition.svd;version="0.39.0.SNAPSHOT";uses:="o
+ rg.ejml.data,org.ejml.dense.row.decomposition.svd.implicitqr,org.ejml.i
+ nterfaces.decomposition",org.ejml.dense.row.misc;version="0.39.0.SNAPSH
+ OT";uses:="org.ejml.data",org.ejml.dense.row.mult;version="0.39.0.SNAPS
+ HOT";uses:="org.ejml.data",org.ejml.interfaces;version="0.39.0.SNAPSHOT
+ ";uses:="org.ejml.data"
+Import-Package: org.ejml;version="[0.39,1)",org.ejml.data;version="[0.39
+ ,1)",org.ejml.dense.fixed;version="[0.39,1)",org.ejml.dense.row;version
+ ="[0.39,1)",org.ejml.dense.row.decompose.lu;version="[0.39,1)",org.ejml
+ .dense.row.decomposition.bidiagonal;version="[0.39,1)",org.ejml.dense.r
+ ow.decomposition.svd.implicitqr;version="[0.39,1)",org.ejml.generic;ver
+ sion="[0.39,1)",org.ejml.interfaces.decomposition;version="[0.39,1)",or
+ g.ejml.ops;version="[0.39,1)",org.ejml.simple;version="[0.39,1)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Bundle-Vendor: EJML
+Bundle-SymbolicName: org.ejml.experimental
+Bundle-Version: 0.39.0.SNAPSHOT
+Bundle-Name: ejml-experimental
+Bundle-DocURL: http://ejml.org/
+
