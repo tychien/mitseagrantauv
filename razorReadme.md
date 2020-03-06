@@ -1,7 +1,8 @@
 # Razor IMU M0 for AUV_LAB
 
 This document is written by Tim Chien. tychien@mit.edu
-\newline Ref http://wiki.ros.org/razor_imu_9dof
+
+Ref http://wiki.ros.org/razor_imu_9dof
 ## Installation & Prepare
 
 In 
