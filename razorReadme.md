@@ -58,7 +58,7 @@ Open the third terminal
 $ rostopic echo /heading 
 ``` 
 if it works well, it'll show the heading 
-
+![show the heading](https://github.com/tychien/mitseagrantauv/blob/master/heading.jpg)
 ## Notification
 
 I've tried to work through these steps including calibration and measuring on the metal desk for the previos times, 
@@ -69,4 +69,8 @@ Then I moved the razor imu to the wood desk and keep it far away from any electr
 
 Then, the drifting problem has been resolved. 
 
-It looks quite well like this... 
+It looks quite well like this...
+![deg55]()
+![deg145]()
+![deg235]()
+![deg325]() 
