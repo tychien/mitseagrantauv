@@ -6,6 +6,7 @@ Here's the Razor IMU official [WIKI](http://wiki.ros.org/razor_imu_9dof)
 
 The Board 14001 [Specs](https://www.sparkfun.com/products/14001) 
 
+![razor_imu_14001](https://github.com/tychien/mitseagrantauv/IMG_7081)
 ## Installation & Preparation
 
 *  Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
