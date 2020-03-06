@@ -72,5 +72,5 @@ Then, the drifting problem has been resolved.
 It looks quite well like this...
 ![deg55](https://github.com/tychien/mitseagrantauv/blob/master/deg55.jpg)
 ![deg145](https://github.com/tychien/mitseagrantauv/blob/master/deg145.jpg)
-![deg235](https://github.com/tychien/mitseagrantauv/blob/master/deg235.jpg)
-![deg325](https://github.com/tychien/mitseagrantauv/blob/master/deg325.jpg) 
+![deg235](https://github.com/tychien/mitseagrantauv/blob/master/deg234.jpg)
+![deg325](https://github.com/tychien/mitseagrantauv/blob/master/deg324.jpg) 
