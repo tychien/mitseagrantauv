@@ -8,12 +8,17 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
 
 ## Installation & Preparation
 
-1. Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
-1. Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
+1.  Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
+1.  Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
     1.  and select Razor IMU M0 Board. (url) 
-1. Download [ProcessingIDE](https://processing.org/download/)
-    1. Download [EJML](url) library to the Processing sketch book. 
-1. Plug in the board into the computer port
+1.  Download [ProcessingIDE](https://processing.org/download/)
+    1. Download [EJML](url) library to the Processing sketch book.
+1.  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof)to the catkin_ws/src directory. 
+```bash 
+git clone https://github.com/KristofRobot/razor_imu_9dof.git 
+```
+
+1.  Plug in the board into the computer port
 
 
 In 
