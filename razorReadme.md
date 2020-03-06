@@ -8,18 +8,18 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
 
 ## Installation & Preparation
 
-1.  Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
-1.  Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
-    1.  and select Razor IMU M0 Board. (url) 
-1.  Download [ProcessingIDE](https://processing.org/download/)
-    1. Download [EJML](url) library to the Processing sketch book.
-1.  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the catkin_ws/src directory. 
+*  Download the [ROS](http://wiki.ros.org/melodic/Installation/Ubuntu)
+*  Download the [ArduinoIDE](https://www.arduino.cc/en/guide/linux#toc2)
+    *  and select Razor IMU M0 Board. (url) 
+*  Download [ProcessingIDE](https://processing.org/download/)
+    * Download [EJML](url) library to the Processing sketch book.
+*  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the catkin_ws/src directory. 
 ```bash 
 cd ~/catkin_ws/src (path to your catkin_ws directory)
 git clone https://github.com/KristofRobot/razor_imu_9dof.git 
 ```
-1.  Download this python file [convert_to_rpy.py](https://github.com/tychien/mitseagrantauv), we will use it later. 
-1.  Plug in the board into the computer port, make sure to give the permission to the board using
+*  Download this python file [convert_to_rpy.py](https://github.com/tychien/mitseagrantauv), we will use it later. 
+*  Plug in the board into the computer port, make sure to give the permission to the board using
 ```bash 
 sudo chmod 666 ttyACM0 
 ```
