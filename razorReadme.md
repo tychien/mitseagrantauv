@@ -33,6 +33,7 @@ sudo chmod 666 ttyACM0
 1.  Quit the Serial Monitor and Launch the Processing IDE. 
 1.  Open the Magnetometer Calibration file in catkin_ws/src/razor_imu_9dof/magnetometer_calibration/Processing directory.
 1.  Run the code. It will pop-up a new window with a surphace. If not, then press r to restart.
+![IMAGE of the pop-up window](https://github.com/tychien/mitseagrantauv/blob/master/processing_megnetometer_calibration.HEIC)
 1.  Move the razor imu to make the dots cover the surphace in the pop-up window. Press Space to show the calibration value.
 1.  Write the calibration value into my_razor.yaml file. 
 ```bash 
