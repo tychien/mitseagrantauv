@@ -14,8 +14,8 @@ def imu_cb(message):
   q = message.orientation
   euler = tf.transformations.euler_from_quaternion([q.x, q.y, q.z, q.w])[:3]
   degrees = [180/3.14*x for x in euler]
- # heading = 180-degrees[2]
-  heading = 90-degrees[2]
+ # heading = 90-degrees[2]
+  heading = 180-degrees[2]
   pub_euler.publish(euler[0], euler[1], euler[2])
   pub_euler_degrees.publish(degrees[0], degrees[1], degrees[2])
   pub_heading.publish(heading)
