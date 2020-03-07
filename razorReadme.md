@@ -30,10 +30,10 @@ sudo chmod 666 ttyACM0
 ## Calibration
 
 1.  Launch Arduino IDE and open the Serial Monitor.
-1.  Type #oc in the Seriel Monitor Command Line to enter the accelerometer calibration mode.
+1.  Type `#oc `in the Seriel Monitor Command Line to enter the accelerometer calibration mode.
 1.  Take the board and point straight down with x, y, z axes and do the same thing in oppisite side to get the MAX and min calibration value and write it down.
-1.  Type #on in the Seriel Monitor Command Line to enter the magnitude calibration mode and do the same thing as 3.
-1.  Type #on again to get into Gyro calibraion mode, and do the same thing as 3.
+1.  Type `#on `in the Seriel Monitor Command Line to enter the magnitude calibration mode and do the same thing as 3.
+1.  Type `#on `again to get into Gyro calibraion mode, and do the same thing as 3.
 1.  Quit the Serial Monitor and Launch the Processing IDE. 
 1.  Open the Magnetometer Calibration file which is in `catkin_ws/src/razor_imu_9dof/magnetometer_calibration/Processing` directory.
 1.  Run the code. It will pop-up a new window with a surphace. If not, then press r to restart.
