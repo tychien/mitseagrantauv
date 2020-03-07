@@ -17,7 +17,7 @@ The Board 14001 [Specs](https://www.sparkfun.com/products/14001)
 ```bash 
 cd ~/sketchbook/libraries
 ```
-*  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the catkin_ws/src directory. 
+*  Download [razor_imu_9dof](https://github.com/KristofRobot/razor_imu_9dof) to the `catkin_ws/src` directory. 
 ```bash 
 cd ~/catkin_ws/src (path to your catkin_ws directory)
 git clone https://github.com/KristofRobot/razor_imu_9dof.git 
@@ -30,15 +30,15 @@ sudo chmod 666 ttyACM0
 ## Calibration
 
 1.  Launch Arduino IDE and open the Serial Monitor.
-1.  Type `#oc `in the Seriel Monitor Command Line to enter the accelerometer calibration mode.
+1.  Type `#oc`in the Seriel Monitor Command Line to enter the accelerometer calibration mode.
 1.  Take the board and point straight down with x, y, z axes and do the same thing in oppisite side to get the MAX and min calibration value and write it down.
-1.  Type `#on `in the Seriel Monitor Command Line to enter the magnitude calibration mode and do the same thing as 3.
-1.  Type `#on `again to get into Gyro calibraion mode, and do the same thing as 3.
+1.  Type `#on`in the Seriel Monitor Command Line to enter the magnitude calibration mode and do the same thing as 3.
+1.  Type `#on`again to get into Gyro calibraion mode, and do the same thing as 3.
 1.  Quit the Serial Monitor and Launch the Processing IDE. 
 1.  Open the Magnetometer Calibration file which is in `catkin_ws/src/razor_imu_9dof/magnetometer_calibration/Processing` directory.
-1.  Run the code. It will pop-up a new window with a surphace. If not, then press r to restart.
+1.  Run the code. It will pop-up a new window with a surphace. If not, then press `r` to restart.
 ![IMAGE of the pop-up window](https://github.com/tychien/mitseagrantauv/blob/master/processing_megnetometer_calibration.jpg)
-1.  Move the razor imu to make the dots cover the surphace in the pop-up window. Press Space to show the calibration value.
+1.  Move the razor imu to make the dots cover the surphace in the pop-up window. Press `Space` to show the calibration value.
 1.  Write the calibration value into `my_razor.yaml` file. 
 ```bash 
 vim ~/catkin_ws/src/razor_imu_9dof/config/my_razor.yaml
