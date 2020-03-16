@@ -11,4 +11,4 @@ both IR cameras have 25 degrees difference from normal, and the distance between
 
 # Below is the Panorama View from the center of the 24 inches bar.
 ![Pano](https://github.com/tychien/mitseagrantauv/blob/master/CAMERA_ANGLE/CameraAngel/CameraAngel.010.jpeg)
-From the cases above, we can know that with smaller distance between the two cameras, the lesser distortion it get. We have much normal view from the InfraRed Camer at a distance of 4 inches with 25 degrees of angle; we have better Image Camera view at a distance of 8 inches with 15 degrees of angle.
+From the cases above, we can know that with smaller distance between the two cameras, the lesser distortion it get. We have much normal view from the InfraRed Camer at a distance of 4 inches with 25 degrees of angle. The TOTAL Infrared Camera ANGLE is 75+(25x2)=125 degrees ; we have better Image Camera view at a distance of 8 inches with 15 degrees of angle. The TOTAL Image Camera ANGLE is 48+(15x2)=78 degrees.
