@@ -3,10 +3,10 @@
 This document is written by Tim Chien. tychien@mit.edu
 
 
-#With these desired angles
+## With these desired angles
 ![IR 25 18 IM 15 8](https://github.com/tychien/mitseagrantauv/blob/master/CAMERA_ANGLE/CameraAngel/CameraAngel.009.jpeg)
 
-# Add the Cameras and edit the position and orientation parameters in the sensor_config.yaml file
+## Add the Cameras and edit the position and orientation parameters in the sensor_config.yaml file
 
 ```yaml
 wamv_camera:
@@ -49,13 +49,13 @@ lidar:
       P: ${radians(1)}
 ```
 
-#in the vrx gazebo environment
+## In the vrx gazebo environment
 ![VRX](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2017-13-32.png)
 
-#how it looks like on the REX 
+## How it looks like on the REX 
 ![REX](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2016-29-04.png)
 
-#View from the cameras in the Rviz 
+## View from the cameras in the Rviz 
 ![Rviz](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2017-15-16.png)
 
 
