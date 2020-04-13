@@ -3,7 +3,10 @@
 This document is written by Tim Chien. tychien@mit.edu
 
 
-## With these desired angles
+## With these desired angles and positions
+
+InfraRed Cameras 25 degrees with the distance of 18 inches 
+Image    Cameras 15 degrees with the distance of  8 inches
 ![IR 25 18 IM 15 8](https://github.com/tychien/mitseagrantauv/blob/master/CAMERA_ANGLE/CameraAngel/CameraAngel.009.jpeg)
 
 ## Add the Cameras and edit the position and orientation parameters in the sensor_config.yaml file
