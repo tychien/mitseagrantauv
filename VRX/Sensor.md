@@ -7,35 +7,34 @@ This document is written by Tim Chien. tychien@mit.edu
 with these angles
 ![IR 25 18 IM 15 8](https://github.com/tychien/mitseagrantauv/blob/master/CAMERA_ANGLE/CameraAngel/CameraAngel.009.jpeg)
 
-with position and orientation parameters
-![yaml](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2016-30-23.png)
+edit the position and orientation parameters
 
 ```yaml
 wamv_camera:
     - name: left_infred_camera
       x: 0.81
       y: 0.18
-      z: 1.9
+      z: 1.9        
       P: ${radians(5)}
-      Y: 0.436
+      Y: 0.436      # radian 0.436 = 25 degrees
     - name: left_image_camera
       x: 0.81
       y: 0.04
       z: 1.9
       P: ${radians(5)}
-      Y: 0.262
+      Y: 0.262      # radian 0.262 = 15 degrees 
     - name: right_image_camera
       x: 0.81
       y: -0.04
       z: 1.9
       P: ${radians(5)}
-      Y: -0.262
+      Y: -0.262     # radian -0.262 = -15 degrees
     - name: right_infrared_camera
       x: 0.81
       y: -0.18
       z: 1.9
       P: ${radians(5)}
-      Y: -0.436
+      Y: -0.436     # radian -0.436 = -25 degrees
 wamv_gps:
     - name: gps_wamv
       x: -0.85
