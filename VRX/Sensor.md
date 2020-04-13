@@ -56,7 +56,7 @@ lidar:
 ## In the vrx gazebo environment
 ![VRX](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2017-13-32.png)
 
-## How it looks like on the REX 
+## Cameras on the REX 
 ![REX](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2016-29-04.png)
 
 ## View from the cameras in the Rviz 
