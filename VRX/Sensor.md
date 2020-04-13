@@ -10,6 +10,47 @@ with these angles
 with position and orientation parameters
 ![yaml](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2016-30-23.png)
 
+```yaml
+wamv_camera:
+    - name: left_infred_camera
+      x: 0.81
+      y: 0.18
+      z: 1.9
+      P: ${radians(5)}
+      Y: 0.436
+    - name: left_image_camera
+      x: 0.81
+      y: 0.04
+      z: 1.9
+      P: ${radians(5)}
+      Y: 0.262
+    - name: right_image_camera
+      x: 0.81
+      y: -0.04
+      z: 1.9
+      P: ${radians(5)}
+      Y: -0.262
+    - name: right_infrared_camera
+      x: 0.81
+      y: -0.18
+      z: 1.9
+      P: ${radians(5)}
+      Y: -0.436
+wamv_gps:
+    - name: gps_wamv
+      x: -0.85
+      z: 1.9
+wamv_imu:
+    - name: imu_wamv
+      x: 0.85
+      y: 0.0
+lidar:
+    - name: lidar_wamv
+      type: 32_beam
+      x: 0.85
+      P: ${radians(1)}
+```
+
 in the vrx gazebo environment
 ![VRX](https://github.com/tychien/mitseagrantauv/blob/master/VRX/Screenshot%20from%202020-04-12%2017-13-32.png)
 
