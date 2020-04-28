@@ -1,8 +1,14 @@
-# trouble shooting
+# 5 Cameras on Philos 
 
-### ImportError: No module named generator_scripts.wamv_config.configure_wamv
+This document is written by Tim Chien. tychien@mit.edu
 
-try to `source ~/vrx_ws/devel/setup.bash`
+## Desired angles and positions
+
+![desired](https://github.com/tychien/mitseagrantauv/blob/master/Philos/CameraAngel/CameraAngel.001.png)
+
+
+## yaml file
+
 
 ```yaml
 
@@ -52,3 +58,22 @@ lidar:
       P: ${radians(1)}
 
 ```
+
+## In the VRX_GAZEBO environment
+![VRX1](https://github.com/tychien/mitseagrantauv/blob/master/Philos/CameraAngel/robotx_example_course_gzclient_camera(1)-2020-04-27T15_47_53.811145.jpg)
+
+![VRX2](https://github.com/tychien/mitseagrantauv/blob/master/Philos/CameraAngel/robotx_example_course_gzclient_camera(1)-2020-04-27T15_48_30.769825.jpg)
+
+
+## Cameras on the Philos
+![Philos](https://github.com/tychien/mitseagrantauv/blob/master/Philos/CameraAngel/robotx_example_course_gzclient_camera(1)-2020-04-28T13_46_58.735613.jpg)
+
+
+## View from the Rviz
+![Rviz](https://github.com/tychien/mitseagrantauv/blob/master/Philos/CameraAngel/Screenshot%20from%202020-04-27%2015-50-18.png)
+
+# trouble shooting
+
+### ImportError: No module named generator_scripts.wamv_config.configure_wamv
+
+Remember to `source ~/vrx_ws/devel/setup.bash`
