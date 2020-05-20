@@ -1,0 +1,2 @@
+passthrough
+-DCATKIN_DEVEL_PREFIX=/home/tychien/mitseagrantauv/pclphilo/devel -DCMAKE_INSTALL_PREFIX=/home/tychien/mitseagrantauv/pclphilo/install -G Unix Makefiles

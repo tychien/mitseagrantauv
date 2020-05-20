@@ -1,0 +1,8 @@
+prefix=/home/tychien/mitseagrantauv/pclphilo/devel
+
+Name: pclprocessing
+Description: Description of pclprocessing
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
