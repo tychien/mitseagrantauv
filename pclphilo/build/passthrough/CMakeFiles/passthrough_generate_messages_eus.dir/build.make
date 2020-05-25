@@ -58,7 +58,7 @@ passthrough/CMakeFiles/passthrough_generate_messages_eus: /home/tychien/mitseagr
 
 /home/tychien/mitseagrantauv/pclphilo/devel/share/roseus/ros/passthrough/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tychien/mitseagrantauv/pclphilo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for passthrough"
-	cd /home/tychien/mitseagrantauv/pclphilo/build/passthrough && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/tychien/mitseagrantauv/pclphilo/devel/share/roseus/ros/passthrough passthrough std_msgs
+	cd /home/tychien/mitseagrantauv/pclphilo/build/passthrough && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/tychien/mitseagrantauv/pclphilo/devel/share/roseus/ros/passthrough passthrough std_msgs sensor_msgs
 
 passthrough_generate_messages_eus: passthrough/CMakeFiles/passthrough_generate_messages_eus
 passthrough_generate_messages_eus: /home/tychien/mitseagrantauv/pclphilo/devel/share/roseus/ros/passthrough/manifest.l

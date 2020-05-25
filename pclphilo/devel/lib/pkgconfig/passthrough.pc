@@ -3,6 +3,6 @@ prefix=/home/tychien/mitseagrantauv/pclphilo/devel
 Name: passthrough
 Description: Description of passthrough
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/tychien/mitseagrantauv/pclphilo/src/passthrough/include
 Libs: -L${prefix}/lib 
 Requires: 

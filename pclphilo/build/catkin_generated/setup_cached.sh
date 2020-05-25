@@ -8,4 +8,3 @@
 
 # modified environment variables
 export PWD="/home/tychien/mitseagrantauv/pclphilo/build"
-export PYTHONPATH="/home/tychien/mitseagrantauv/pclphilo/devel/lib/python2.7/dist-packages:$PYTHONPATH"
