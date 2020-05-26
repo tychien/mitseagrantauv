@@ -762,6 +762,9 @@ passthrough_BINARY_DIR:STATIC=/home/tychien/mitseagrantauv/pclphilo/build/passth
 //Value Computed by CMake
 passthrough_SOURCE_DIR:STATIC=/home/tychien/mitseagrantauv/pclphilo/src/passthrough
 
+//The directory containing a CMake configuration file for pcl.
+pcl_DIR:PATH=pcl_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/melodic/share/pcl_conversions/cmake
 

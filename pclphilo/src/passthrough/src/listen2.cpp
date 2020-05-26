@@ -9,7 +9,7 @@
 
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
-PointCloud::ConstPtr a;
+PointCloud a;
 void callback(const PointCloud::ConstPtr& msg)
 {
   printf ("Cloud: width = %d, height = %d\n", msg->width, msg->height);
@@ -27,7 +27,11 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe<PointCloud>("velodyne_points", 1, callback);
     
   ros::NodeHandle pn;
-  ros::Publisher pub = pn.advertise<PointCloud> ("points2",1);
+  //ros::Publisher pub = pn.advertise<PointCloud> ("points2",1);
+  ros::Publisher pub = pn.advertise<std_msgs::String> ("points2",1);
+  std_msgs::String hi;
+  hi.data = "hi";
+  pub.publish(hi);
   /*
   ros::Rate loop_rate(4);
   while (pn.ok())

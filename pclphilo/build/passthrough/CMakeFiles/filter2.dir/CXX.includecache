@@ -6,12 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/tychien/mitseagrantauv/pclphilo/src/passthrough/src/filter.cpp
+/home/tychien/mitseagrantauv/pclphilo/src/passthrough/src/filterPCL2.cpp
 ros/ros.h
 /home/tychien/mitseagrantauv/pclphilo/src/passthrough/src/ros/ros.h
 std_msgs/String.h
 -
 pcl_ros/point_cloud.h
+-
+sensor_msgs/PointCloud2.h
 -
 iostream
 -
