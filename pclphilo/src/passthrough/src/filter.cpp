@@ -5,7 +5,9 @@
 #include <pcl/point_types.h>
 #include <pcl/filters/passthrough.h>
 
-typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
+typedef pcl::PointCloud<pcl::PointXYZI> PointCloud;
+typedef pcl::PointCloud<pcl::PointXYZRGB> PointType;
+
 class SubscribeAndPublish{
     public:
         SubscribeAndPublish(){
@@ -16,25 +18,38 @@ class SubscribeAndPublish{
         void callback(const PointCloud input){
             //.... do something with the input and generate the output...
         //    PointCloud output;
-            pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
-            pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZ>);
+            pcl::PointCloud<pcl::PointXYZI>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZI>);
+            pcl::PointCloud<pcl::PointXYZI>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZI>);
+            cloud->header.frame_id ="filter"; 
             cloud->width = input.width;
             cloud->height = input.height;
             cloud->points.resize (cloud->width * cloud->height);
             cloud->points = input.points;
             
-            std::cout << input.width<< " ";
+            std::cout << input.height << " " << input.width<< " ";
               
           //  output = input;
             // Create the filtering object
              
-            pcl::PassThrough<pcl::PointXYZ> pass;
-            pass.setInputCloud (cloud);
-            pass.setFilterFieldName ("z");
-            pass.setFilterLimits (0.0, 1.0);
+            pcl::PassThrough<pcl::PointXYZI> passz;
+            passz.setInputCloud (cloud);
+            passz.setFilterFieldName ("z");
+            passz.setFilterLimits (-2.4, 0.5);
             //pass.setFilterLimitsNegative (true);
-            pass.filter (*filtered_cloud);            
+            passz.filter (*filtered_cloud);            
 
+
+            pcl::PassThrough<pcl::PointXYZI> passx;
+            passx.setInputCloud (cloud);
+            passx.setFilterFieldName ("x");
+            passx.setFilterLimits (-80, 80);
+            passx.filter(*filtered_cloud);
+
+            pcl::PassThrough<pcl::PointXYZI> passy;
+            passy.setInputCloud (cloud);
+            passy.setFilterFieldName("y");
+            passy.setFilterLimits(-80,80);
+            passy.filter(*filtered_cloud);
 
             pub.publish(filtered_cloud);
         }
@@ -46,7 +61,7 @@ class SubscribeAndPublish{
 };
 
 int main(int argc, char **argv){
-    ros::init(argc, argv, "subscribe_and_publish");
+    ros::init(argc, argv, "filtering");
     SubscribeAndPublish SAPObject;
     ros::spin();
     return 0;

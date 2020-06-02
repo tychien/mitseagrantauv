@@ -285,6 +285,19 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named segmentation
+
+# Build rule for target.
+segmentation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 segmentation
+.PHONY : segmentation
+
+# fast build rule for target.
+segmentation/fast:
+	$(MAKE) -f passthrough/CMakeFiles/segmentation.dir/build.make passthrough/CMakeFiles/segmentation.dir/build
+.PHONY : segmentation/fast
+
+#=============================================================================
 # Target rules for targets named filter
 
 # Build rule for target.
@@ -389,6 +402,19 @@ passthrough_generate_messages_cpp/fast:
 .PHONY : passthrough_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named downsampling
+
+# Build rule for target.
+downsampling: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 downsampling
+.PHONY : downsampling
+
+# fast build rule for target.
+downsampling/fast:
+	$(MAKE) -f passthrough/CMakeFiles/downsampling.dir/build.make passthrough/CMakeFiles/downsampling.dir/build
+.PHONY : downsampling/fast
+
+#=============================================================================
 # Target rules for targets named bond_generate_messages_lisp
 
 # Build rule for target.
@@ -426,6 +452,19 @@ std_msgs_generate_messages_nodejs: cmake_check_build_system
 std_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f passthrough/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make passthrough/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named cluster_extraction
+
+# Build rule for target.
+cluster_extraction: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cluster_extraction
+.PHONY : cluster_extraction
+
+# fast build rule for target.
+cluster_extraction/fast:
+	$(MAKE) -f passthrough/CMakeFiles/cluster_extraction.dir/build.make passthrough/CMakeFiles/cluster_extraction.dir/build
+.PHONY : cluster_extraction/fast
 
 #=============================================================================
 # Target rules for targets named nodelet_generate_messages_nodejs
@@ -1000,19 +1039,6 @@ std_msgs_generate_messages_eus/fast:
 .PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named filter2
-
-# Build rule for target.
-filter2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 filter2
-.PHONY : filter2
-
-# fast build rule for target.
-filter2/fast:
-	$(MAKE) -f passthrough/CMakeFiles/filter2.dir/build.make passthrough/CMakeFiles/filter2.dir/build
-.PHONY : filter2/fast
-
-#=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
 
 # Build rule for target.
@@ -1541,6 +1567,7 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... segmentation"
 	@echo "... filter"
 	@echo "... talk"
 	@echo "... passthrough_generate_messages_py"
@@ -1549,9 +1576,11 @@ help:
 	@echo "... passthrough_generate_messages_eus"
 	@echo "... passthrough_genlisp"
 	@echo "... passthrough_generate_messages_cpp"
+	@echo "... downsampling"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... passthrough_gencpp"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... cluster_extraction"
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... pcl_msgs_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_eus"
@@ -1596,7 +1625,6 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
-	@echo "... filter2"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... listen"
 	@echo "... dynamic_reconfigure_generate_messages_eus"

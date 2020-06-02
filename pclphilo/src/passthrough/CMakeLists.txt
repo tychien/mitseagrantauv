@@ -44,8 +44,17 @@ add_executable(filter src/filter.cpp)
 target_link_libraries(filter ${catkin_LIBRARIES})
 #add_dependencies(filter beginner_tutorials_generate_messages_cpp )
 
-add_executable(filter2 src/filterPCL2.cpp)
-target_link_libraries(filter2 ${catkin_LIBRARIES})
+add_executable(downsampling src/downsampling.cpp)
+target_link_libraries(downsampling ${catkin_LIBRARIES})
+
+add_executable(segmentation src/segmentation.cpp)
+target_link_libraries(segmentation ${catkin_LIBRARIES})
+
+#add_executable(cluster src/cluster.cpp)
+#target_link_libraries(cluster ${catkin_LIBRARIES})
+
+add_executable (cluster_extraction src/cluster_extraction.cpp)
+target_link_libraries (cluster_extraction ${PCL_LIBRARIES})
 
 #add_executable(perception_point_cloud_demo src/point_cloud_demo.cpp)
 #set_target_properties(perception_point_cloud_demo PROPERTIES OUTPUT_NAME point_cloud_demo PREFIX "")
