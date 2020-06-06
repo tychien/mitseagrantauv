@@ -40,6 +40,7 @@
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/test.dir
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/segmentation.dir
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/filter.dir
+/home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/cluster.dir
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/talk.dir
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/passthrough_generate_messages_py.dir
 /home/tychien/mitseagrantauv/pclphilo/build/passthrough/CMakeFiles/passthrough_gennodejs.dir

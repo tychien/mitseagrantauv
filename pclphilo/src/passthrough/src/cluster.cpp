@@ -21,7 +21,7 @@ class SubscribeAndPublish{
     public:
         SubscribeAndPublish(){
             pub = n.advertise<PointCloud>("clustered",1);
-            sub = n.subscribe("segmentation_created", 1, &SubscribeAndPublish::callback, this);
+            sub = n.subscribe("downsampled", 1, &SubscribeAndPublish::callback, this);
         }
         
         void callback(const PointCloud input){
@@ -46,7 +46,7 @@ class SubscribeAndPublish{
             ec.setSearchMethod (tree);
             ec.setInputCloud (cloud);
             ec.extract (cluster_indices);
-           
+//a           
             //pub.publish("hi"); 
             int j = 0;
             for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (); it != cluster_indices.end (); ++it)

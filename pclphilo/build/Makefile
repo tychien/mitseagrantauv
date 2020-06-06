@@ -311,6 +311,19 @@ filter/fast:
 .PHONY : filter/fast
 
 #=============================================================================
+# Target rules for targets named cluster
+
+# Build rule for target.
+cluster: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cluster
+.PHONY : cluster
+
+# fast build rule for target.
+cluster/fast:
+	$(MAKE) -f passthrough/CMakeFiles/cluster.dir/build.make passthrough/CMakeFiles/cluster.dir/build
+.PHONY : cluster/fast
+
+#=============================================================================
 # Target rules for targets named talk
 
 # Build rule for target.
@@ -1569,6 +1582,7 @@ help:
 	@echo "... gtest"
 	@echo "... segmentation"
 	@echo "... filter"
+	@echo "... cluster"
 	@echo "... talk"
 	@echo "... passthrough_generate_messages_py"
 	@echo "... passthrough_gennodejs"

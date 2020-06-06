@@ -198,6 +198,21 @@ filter/fast:
 .PHONY : filter/fast
 
 # Convenience name for target.
+passthrough/CMakeFiles/cluster.dir/rule:
+	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f CMakeFiles/Makefile2 passthrough/CMakeFiles/cluster.dir/rule
+.PHONY : passthrough/CMakeFiles/cluster.dir/rule
+
+# Convenience name for target.
+cluster: passthrough/CMakeFiles/cluster.dir/rule
+
+.PHONY : cluster
+
+# fast build rule for target.
+cluster/fast:
+	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f passthrough/CMakeFiles/cluster.dir/build.make passthrough/CMakeFiles/cluster.dir/build
+.PHONY : cluster/fast
+
+# Convenience name for target.
 passthrough/CMakeFiles/talk.dir/rule:
 	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f CMakeFiles/Makefile2 passthrough/CMakeFiles/talk.dir/rule
 .PHONY : passthrough/CMakeFiles/talk.dir/rule
@@ -1622,6 +1637,33 @@ tf2_msgs_generate_messages_nodejs/fast:
 	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f passthrough/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make passthrough/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
 .PHONY : tf2_msgs_generate_messages_nodejs/fast
 
+src/cluster.o: src/cluster.cpp.o
+
+.PHONY : src/cluster.o
+
+# target to build an object file
+src/cluster.cpp.o:
+	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f passthrough/CMakeFiles/cluster.dir/build.make passthrough/CMakeFiles/cluster.dir/src/cluster.cpp.o
+.PHONY : src/cluster.cpp.o
+
+src/cluster.i: src/cluster.cpp.i
+
+.PHONY : src/cluster.i
+
+# target to preprocess a source file
+src/cluster.cpp.i:
+	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f passthrough/CMakeFiles/cluster.dir/build.make passthrough/CMakeFiles/cluster.dir/src/cluster.cpp.i
+.PHONY : src/cluster.cpp.i
+
+src/cluster.s: src/cluster.cpp.s
+
+.PHONY : src/cluster.s
+
+# target to generate assembly for a file
+src/cluster.cpp.s:
+	cd /home/tychien/mitseagrantauv/pclphilo/build && $(MAKE) -f passthrough/CMakeFiles/cluster.dir/build.make passthrough/CMakeFiles/cluster.dir/src/cluster.cpp.s
+.PHONY : src/cluster.cpp.s
+
 src/cluster_extraction.o: src/cluster_extraction.cpp.o
 
 .PHONY : src/cluster_extraction.o
@@ -1822,6 +1864,7 @@ help:
 	@echo "... test"
 	@echo "... segmentation"
 	@echo "... filter"
+	@echo "... cluster"
 	@echo "... talk"
 	@echo "... passthrough_generate_messages_py"
 	@echo "... passthrough_gennodejs"
@@ -1921,6 +1964,9 @@ help:
 	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... passthrough_geneus"
 	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... src/cluster.o"
+	@echo "... src/cluster.i"
+	@echo "... src/cluster.s"
 	@echo "... src/cluster_extraction.o"
 	@echo "... src/cluster_extraction.i"
 	@echo "... src/cluster_extraction.s"
