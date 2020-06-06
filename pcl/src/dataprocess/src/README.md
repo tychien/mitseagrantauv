@@ -1,1 +1,15 @@
+# PCL DataProcessing 
 
+![rqt_graph](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/rosgraph.png)
+
+1. Receive pcl data from /velodyne_points and then filtering
+[passthrough_filter](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/filter.cpp)
+
+1. After filtering, downsample the pcl data by voxel_grid method
+[voxel_grid_downsample](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/downsampling.cpp)
+
+1. After downsampling, remove the outliers 
+[outliers_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/remove_outliers.cpp)
+
+1. After removing, cluster! (not showing anything in rostopic echo /clustered)
+[cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/cluster.cpp)
