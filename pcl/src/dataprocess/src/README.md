@@ -13,3 +13,6 @@
 
 ### 4. After removing, cluster! (not showing anything in rostopic echo /clustered)
 [cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/cluster.cpp)
+
+### 5. Compiling 
+[CMakelist](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/CMakeLists.txt)
