@@ -14,5 +14,12 @@
 ### 4. After removing, cluster! (not showing anything in rostopic echo /clustered)
 [cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/cluster.cpp)
 
+
 ### 5. Compiling 
 [CMakelist](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/CMakeLists.txt)
+
+| RAW | Filtered |
+:-------------------------:|:-------------------------:
+|![raw](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/Screenshot%20from%20raw.mp4.png)|![filtered](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/Screenshot%20from%20filter.mp4.png)
+| Downsampled | Outlier_removed |
+|![downsampled](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/Screenshot%20from%20downsampled.mp4.png)|![outlier_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/Screenshot%20from%20outlier_removal.png)
