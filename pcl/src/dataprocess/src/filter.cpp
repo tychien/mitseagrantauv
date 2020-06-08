@@ -52,6 +52,10 @@ class SubscribeAndPublish{
             passy.filter(*filtered_cloud);
 
             pub.publish(filtered_cloud);
+
+                std::cout << " " << filtered_cloud->points[1].z << std::endl;
+
+
         }
 
     private:

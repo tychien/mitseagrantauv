@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/dataprocess_generate_messages_eus"
+  "/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l"
   "/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/manifest.l"
 )
 

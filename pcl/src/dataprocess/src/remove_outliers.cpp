@@ -26,7 +26,7 @@ class SubscribeAndPublish{
             cloud->height= input.height;
             cloud->points.resize(cloud->width * cloud->height);
             cloud->points = input.points;  
-            std::cout <<cloud->height<<" "<< cloud->width <<" ";
+            //std::cout <<cloud->height<<" "<< cloud->width <<" ";
 
             pcl::RadiusOutlierRemoval<pcl::PointXYZI> outrem;
             // build the filter
@@ -38,7 +38,8 @@ class SubscribeAndPublish{
             
 
             pub.publish(filtered_cloud); 
-        
+            
+            std::cout << " " << filtered_cloud->points[1].z <<" "<< std::endl;        
         
         }
 

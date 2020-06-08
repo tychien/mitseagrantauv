@@ -1,0 +1,8 @@
+prefix=/home/tychien/mitseagrantauv/pcl/devel
+
+Name: adaptive_clustering
+Description: Description of adaptive_clustering
+Version: 0.0.1
+Cflags: -I/home/tychien/mitseagrantauv/pcl/devel/include
+Libs: -L${prefix}/lib 
+Requires: 

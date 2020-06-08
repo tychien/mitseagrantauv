@@ -1,3 +1,7 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/dataprocess_generate_messages_cpp"
+  "/home/tychien/mitseagrantauv/pcl/devel/include/dataprocess/ClusterArray.h"
+)
 
 # Per-language clean rules from dependency scanning.
 foreach(lang )

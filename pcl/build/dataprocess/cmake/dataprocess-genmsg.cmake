@@ -1,10 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(WARNING "Invoking generate_messages() without having added any message or service file before.
-You should either add add_message_files() and/or add_service_files() calls or remove the invocation of generate_messages().")
-message(STATUS "dataprocess: 0 messages, 0 services")
+message(STATUS "dataprocess: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/melodic/share/sensor_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Idataprocess:/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/melodic/share/sensor_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -19,12 +17,23 @@ add_custom_target(dataprocess_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_custom_target(_dataprocess_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "dataprocess" "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" "sensor_msgs/PointCloud2:sensor_msgs/PointField:std_msgs/Header"
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(dataprocess
+  "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointCloud2.msg;/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointField.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/dataprocess
+)
 
 ### Generating Services
 
@@ -40,6 +49,8 @@ add_custom_target(dataprocess_generate_messages_cpp
 add_dependencies(dataprocess_generate_messages dataprocess_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_dependencies(dataprocess_generate_messages_cpp _dataprocess_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(dataprocess_gencpp)
@@ -50,6 +61,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS dataprocess_generate_messages_cpp)
 
 ### Section generating for lang: geneus
 ### Generating Messages
+_generate_msg_eus(dataprocess
+  "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointCloud2.msg;/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointField.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/dataprocess
+)
 
 ### Generating Services
 
@@ -65,6 +82,8 @@ add_custom_target(dataprocess_generate_messages_eus
 add_dependencies(dataprocess_generate_messages dataprocess_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_dependencies(dataprocess_generate_messages_eus _dataprocess_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(dataprocess_geneus)
@@ -75,6 +94,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS dataprocess_generate_messages_eus)
 
 ### Section generating for lang: genlisp
 ### Generating Messages
+_generate_msg_lisp(dataprocess
+  "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointCloud2.msg;/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointField.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/dataprocess
+)
 
 ### Generating Services
 
@@ -90,6 +115,8 @@ add_custom_target(dataprocess_generate_messages_lisp
 add_dependencies(dataprocess_generate_messages dataprocess_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_dependencies(dataprocess_generate_messages_lisp _dataprocess_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(dataprocess_genlisp)
@@ -100,6 +127,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS dataprocess_generate_messages_lisp)
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
+_generate_msg_nodejs(dataprocess
+  "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointCloud2.msg;/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointField.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/dataprocess
+)
 
 ### Generating Services
 
@@ -115,6 +148,8 @@ add_custom_target(dataprocess_generate_messages_nodejs
 add_dependencies(dataprocess_generate_messages dataprocess_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_dependencies(dataprocess_generate_messages_nodejs _dataprocess_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(dataprocess_gennodejs)
@@ -125,6 +160,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS dataprocess_generate_messages_nodej
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(dataprocess
+  "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointCloud2.msg;/opt/ros/melodic/share/sensor_msgs/cmake/../msg/PointField.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/dataprocess
+)
 
 ### Generating Services
 
@@ -140,6 +181,8 @@ add_custom_target(dataprocess_generate_messages_py
 add_dependencies(dataprocess_generate_messages dataprocess_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg" NAME_WE)
+add_dependencies(dataprocess_generate_messages_py _dataprocess_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(dataprocess_genpy)

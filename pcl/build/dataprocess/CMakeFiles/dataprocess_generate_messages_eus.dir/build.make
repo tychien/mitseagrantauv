@@ -53,14 +53,24 @@ CMAKE_BINARY_DIR = /home/tychien/mitseagrantauv/pcl/build
 # Include the progress variables for this target.
 include dataprocess/CMakeFiles/dataprocess_generate_messages_eus.dir/progress.make
 
+dataprocess/CMakeFiles/dataprocess_generate_messages_eus: /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l
 dataprocess/CMakeFiles/dataprocess_generate_messages_eus: /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/manifest.l
 
 
+/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l: /home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg
+/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l: /opt/ros/melodic/share/sensor_msgs/msg/PointCloud2.msg
+/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l: /opt/ros/melodic/share/sensor_msgs/msg/PointField.msg
+/home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from dataprocess/ClusterArray.msg"
+	cd /home/tychien/mitseagrantauv/pcl/build/dataprocess && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/tychien/mitseagrantauv/pcl/src/dataprocess/msg/ClusterArray.msg -Idataprocess:/home/tychien/mitseagrantauv/pcl/src/dataprocess/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/melodic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p dataprocess -o /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg
+
 /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for dataprocess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for dataprocess"
 	cd /home/tychien/mitseagrantauv/pcl/build/dataprocess && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess dataprocess std_msgs sensor_msgs
 
 dataprocess_generate_messages_eus: dataprocess/CMakeFiles/dataprocess_generate_messages_eus
+dataprocess_generate_messages_eus: /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/msg/ClusterArray.l
 dataprocess_generate_messages_eus: /home/tychien/mitseagrantauv/pcl/devel/share/roseus/ros/dataprocess/manifest.l
 dataprocess_generate_messages_eus: dataprocess/CMakeFiles/dataprocess_generate_messages_eus.dir/build.make
 

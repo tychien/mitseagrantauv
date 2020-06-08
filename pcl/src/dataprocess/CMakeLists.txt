@@ -1,15 +1,19 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(dataprocess)
 
-## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS  pcl_ros roscpp rospy std_msgs sensor_msgs genmsg)
+find_package(catkin REQUIRED COMPONENTS  visualization_msgs geometry_msgs pcl_conversions pcl_ros roscpp rospy std_msgs sensor_msgs genmsg)
 find_package(PCL 1.3 REQUIRED)
 ## Declare ROS messages and services
 #add_message_files(FILES Num.msg)
 #add_service_files(FILES AddTwoInts.srv)
 
+add_message_files(FILES ClusterArray.msg)
 ## Generate added messages and services
 generate_messages(DEPENDENCIES std_msgs sensor_msgs)
+
+set(msg_files 
+   "msg/ClusterArray.msg"
+)
 
 ## Declare a catkin package
 catkin_package(
@@ -56,6 +60,11 @@ target_link_libraries(segmentation ${catkin_LIBRARIES})
 
 add_executable(cluster src/cluster.cpp)
 target_link_libraries(cluster ${catkin_LIBRARIES})
+
+if(catkin_EXPORTED_TARGETS)
+  add_dependencies(cluster ${catkin_EXPORTED_TARGETS})
+endif()
+
 
 #add_executable (cluster_extraction src/cluster_extraction.cpp)
 #target_link_libraries (cluster_extraction ${PCL_LIBRARIES})

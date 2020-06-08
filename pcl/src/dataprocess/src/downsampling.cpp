@@ -14,6 +14,7 @@ class SubscribeAndPublish{
         SubscribeAndPublish(){
             pub = n.advertise<PointCloud>("downsampled",1);
             sub = n.subscribe("filtered", 1, &SubscribeAndPublish::callback, this);
+            //sub = n.subscribe("velodyne_points", 1, &SubscribeAndPublish::callback, this);
         }
         
         void callback(const PointCloud input){
@@ -26,7 +27,7 @@ class SubscribeAndPublish{
             cloud->height= input.height;
             cloud->points.resize(cloud->width * cloud->height);
             cloud->points = input.points;  
-            std::cout <<cloud->height<<" "<< cloud->width <<" ";
+            //std::cout <<cloud->height<<" "<< cloud->width <<" ";
             /*
             pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
             pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZ>);
@@ -62,7 +63,9 @@ class SubscribeAndPublish{
             sor.filter(*filtered_cloud);
 
             pub.publish(filtered_cloud); 
-        
+
+
+            std::cout<< " " << filtered_cloud->points[1].z << " " << std::endl;
         
         }
 

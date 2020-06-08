@@ -3,6 +3,6 @@ prefix=/home/tychien/mitseagrantauv/pcl/devel
 Name: dataprocess
 Description: Description of dataprocess
 Version: 0.0.0
-Cflags: -I/home/tychien/mitseagrantauv/pcl/src/dataprocess/include
+Cflags: -I/home/tychien/mitseagrantauv/pcl/devel/include -I/home/tychien/mitseagrantauv/pcl/src/dataprocess/include
 Libs: -L${prefix}/lib 
 Requires: 

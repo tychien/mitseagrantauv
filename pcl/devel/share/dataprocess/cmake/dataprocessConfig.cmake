@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(dataprocess_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/tychien/mitseagrantauv/pcl/src/dataprocess/include " STREQUAL " ")
+if(NOT "/home/tychien/mitseagrantauv/pcl/devel/include;/home/tychien/mitseagrantauv/pcl/src/dataprocess/include " STREQUAL " ")
   set(dataprocess_INCLUDE_DIRS "")
-  set(_include_dirs "/home/tychien/mitseagrantauv/pcl/src/dataprocess/include")
+  set(_include_dirs "/home/tychien/mitseagrantauv/pcl/devel/include;/home/tychien/mitseagrantauv/pcl/src/dataprocess/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
