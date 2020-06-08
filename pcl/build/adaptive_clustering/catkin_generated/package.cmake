@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "adaptive_clustering")
 set(adaptive_clustering_VERSION "0.0.1")
-set(adaptive_clustering_MAINTAINER "Zhi Yan <zhi.yan@utbm.fr>, Li Sun <lsun@lincoln.ac.uk>")
+set(adaptive_clustering_MAINTAINER "Tim Chien <tychien@gmail.com>")
 set(adaptive_clustering_PACKAGE_FORMAT "1")
 set(adaptive_clustering_BUILD_DEPENDS "roscpp" "sensor_msgs" "visualization_msgs" "geometry_msgs" "pcl_conversions" "pcl_ros")
 set(adaptive_clustering_BUILD_EXPORT_DEPENDS "roscpp" "sensor_msgs" "visualization_msgs" "geometry_msgs" "pcl_conversions" "pcl_ros")

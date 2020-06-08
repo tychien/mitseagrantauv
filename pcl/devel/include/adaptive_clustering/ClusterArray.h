@@ -156,6 +156,7 @@ struct Definition< ::adaptive_clustering::ClusterArray_<ContainerAllocator> >
   {
     return "std_msgs/Header header\n"
 "sensor_msgs/PointCloud2[] clusters\n"
+"\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
 "# Standard metadata for higher-level stamped data types.\n"

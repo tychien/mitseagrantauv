@@ -92,6 +92,7 @@ class ClusterArray {
     return `
     std_msgs/Header header
     sensor_msgs/PointCloud2[] clusters
+    
     ================================================================================
     MSG: std_msgs/Header
     # Standard metadata for higher-level stamped data types.

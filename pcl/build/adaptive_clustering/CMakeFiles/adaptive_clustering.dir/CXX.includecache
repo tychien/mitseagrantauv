@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+/home/tychien/mitseagrantauv/pcl/devel/include/adaptive_clustering/ClusterArray.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+sensor_msgs/PointCloud2.h
+-
+
 /home/tychien/mitseagrantauv/pcl/src/adaptive_clustering/src/adaptive_clustering.cpp
 ros/ros.h
 -

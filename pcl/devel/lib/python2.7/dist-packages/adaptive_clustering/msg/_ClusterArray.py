@@ -14,6 +14,7 @@ class ClusterArray(genpy.Message):
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """std_msgs/Header header
 sensor_msgs/PointCloud2[] clusters
+
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
