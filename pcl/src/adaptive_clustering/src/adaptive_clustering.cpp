@@ -216,7 +216,7 @@ int main(int argc, char **argv) {
   marker_array_pub_ = private_nh.advertise<visualization_msgs::MarkerArray>("markers", 100);
   
   /*** Parameters ***/
-  private_nh.param<std::string>("sensor_model", sensor_model_, "HDL-32E"); // VLP-16, HDL-32E, HDL-64E
+  private_nh.param<std::string>("sensor_model", sensor_model_, "VLP-16"); // VLP-16, HDL-32E, HDL-64E
   private_nh.param<std::string>("frame_id", frame_id_, "velodyne");
   private_nh.param<bool>("print_fps", print_fps_, false);
   private_nh.param<float>("z_axis_min", z_axis_min_, -0.5);
