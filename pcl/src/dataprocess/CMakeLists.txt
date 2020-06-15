@@ -44,6 +44,9 @@ add_executable(listen2 src/listen2.cpp)
 target_link_libraries(listen2 ${catkin_LIBRARIES})
 add_dependencies(listen2 beginner_tutorials_generate_messages_cpp)
 
+add_executable(passthrough src/passthrough.cpp)
+target_link_libraries(passthrough ${catkin_LIBRARIES})
+
 add_executable(filter src/filter.cpp)
 target_link_libraries(filter ${catkin_LIBRARIES})
 

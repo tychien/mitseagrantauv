@@ -513,6 +513,21 @@ nodelet_generate_messages_nodejs/fast:
 .PHONY : nodelet_generate_messages_nodejs/fast
 
 # Convenience name for target.
+dataprocess/CMakeFiles/passthrough.dir/rule:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/passthrough.dir/rule
+.PHONY : dataprocess/CMakeFiles/passthrough.dir/rule
+
+# Convenience name for target.
+passthrough: dataprocess/CMakeFiles/passthrough.dir/rule
+
+.PHONY : passthrough
+
+# fast build rule for target.
+passthrough/fast:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/build
+.PHONY : passthrough/fast
+
+# Convenience name for target.
 dataprocess/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
 .PHONY : dataprocess/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
@@ -1847,6 +1862,33 @@ src/listen2.cpp.s:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/listen2.dir/build.make dataprocess/CMakeFiles/listen2.dir/src/listen2.cpp.s
 .PHONY : src/listen2.cpp.s
 
+src/passthrough.o: src/passthrough.cpp.o
+
+.PHONY : src/passthrough.o
+
+# target to build an object file
+src/passthrough.cpp.o:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/src/passthrough.cpp.o
+.PHONY : src/passthrough.cpp.o
+
+src/passthrough.i: src/passthrough.cpp.i
+
+.PHONY : src/passthrough.i
+
+# target to preprocess a source file
+src/passthrough.cpp.i:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/src/passthrough.cpp.i
+.PHONY : src/passthrough.cpp.i
+
+src/passthrough.s: src/passthrough.cpp.s
+
+.PHONY : src/passthrough.s
+
+# target to generate assembly for a file
+src/passthrough.cpp.s:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/src/passthrough.cpp.s
+.PHONY : src/passthrough.cpp.s
+
 src/remove_outliers.o: src/remove_outliers.cpp.o
 
 .PHONY : src/remove_outliers.o
@@ -1963,6 +2005,7 @@ help:
 	@echo "... tf_generate_messages_py"
 	@echo "... pcl_msgs_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_nodejs"
+	@echo "... passthrough"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... pcl_ros_gencfg"
 	@echo "... topic_tools_generate_messages_nodejs"
@@ -2059,6 +2102,9 @@ help:
 	@echo "... src/listen2.o"
 	@echo "... src/listen2.i"
 	@echo "... src/listen2.s"
+	@echo "... src/passthrough.o"
+	@echo "... src/passthrough.i"
+	@echo "... src/passthrough.s"
 	@echo "... src/remove_outliers.o"
 	@echo "... src/remove_outliers.i"
 	@echo "... src/remove_outliers.s"

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <pcl/point_types.h>
 #include <pcl/filters/passthrough.h>
-
+#include <sensor_msgs/PointCloud2.h>
 typedef pcl::PointCloud<pcl::PointXYZI> PointCloud;
 typedef pcl::PointCloud<pcl::PointXYZRGB> PointType;
 

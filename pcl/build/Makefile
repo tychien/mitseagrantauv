@@ -584,6 +584,19 @@ nodelet_generate_messages_nodejs/fast:
 .PHONY : nodelet_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named passthrough
+
+# Build rule for target.
+passthrough: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 passthrough
+.PHONY : passthrough
+
+# fast build rule for target.
+passthrough/fast:
+	$(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/build
+.PHONY : passthrough/fast
+
+#=============================================================================
 # Target rules for targets named pcl_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -1837,6 +1850,7 @@ help:
 	@echo "... tf_generate_messages_py"
 	@echo "... pcl_msgs_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_nodejs"
+	@echo "... passthrough"
 	@echo "... pcl_msgs_generate_messages_eus"
 	@echo "... pcl_ros_gencfg"
 	@echo "... topic_tools_generate_messages_nodejs"

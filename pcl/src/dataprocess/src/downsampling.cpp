@@ -3,81 +3,41 @@
 #include <pcl_ros/point_cloud.h>
 #include <iostream>
 #include <pcl/point_types.h>
-#include <pcl/filters/passthrough.h>
 #include <pcl/filters/voxel_grid.h>
+#include <sensor_msgs/PointCloud2.h>
 
-typedef pcl::PointCloud<pcl::PointXYZI> PointCloud;
-//typedef pcl::PointCloud<pcl::PointXYZRGB> PointType;
+ros::Publisher downsampled_pub;
 
-class SubscribeAndPublish{
-    public:
-        SubscribeAndPublish(){
-            pub = n.advertise<PointCloud>("downsampled",1);
-            sub = n.subscribe("filtered", 1, &SubscribeAndPublish::callback, this);
-            //sub = n.subscribe("velodyne_points", 1, &SubscribeAndPublish::callback, this);
-        }
-        
-        void callback(const PointCloud input){
-            //.... do something with the input and generate the output...
-            pcl::PointCloud<pcl::PointXYZI>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZI>);
-            pcl::PointCloud<pcl::PointXYZI>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZI>);
-            
-            cloud->header.frame_id="downsampled";
-            cloud->width = input.width;
-            cloud->height= input.height;
-            cloud->points.resize(cloud->width * cloud->height);
-            cloud->points = input.points;  
-            //std::cout <<cloud->height<<" "<< cloud->width <<" ";
-            /*
-            pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
-            pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZ>);
-            cloud->header.frame_id ="filter"; 
-            cloud->width = input.width;
-            cloud->height = input.height;
-            cloud->points.resize (cloud->width * cloud->height);
-            cloud->points = input.points;
-            
-            std::cout << input.width<< " ";
-            */
+void PointCloudCallBack(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in){
+    pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_in(new pcl::PointCloud<pcl::PointXYZI>);
+    pcl::fromROSMsg(*ros_pc2_in, *pcl_pc_in);
+
+    std::cout << std::endl;
+
+    std::cout << "before:" << pcl_pc_in->width * pcl_pc_in->height << "points" << std::endl;
 
 
-            /*  
-            // Create the filtering object
-             
-            pcl::PassThrough<pcl::PointXYZ> pass;
-            pass.setInputCloud (cloud);
-            pass.setFilterFieldName ("z");
-            pass.setFilterLimits (0.0, 1.0);
-            //pass.setFilterLimitsNegative (true);
-            pass.filter (*filtered_cloud);            
+    pcl::VoxelGrid<pcl::PointXYZI> sor;
+    sor.setInputCloud(pcl_pc_in);
+    sor.setLeafSize(0.1f, 0.1f, 0.1f);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_out(new pcl::PointCloud<pcl::PointXYZI>);
+    sor.filter(*pcl_pc_out);
 
-
-            pub.publish(filtered_cloud);
-        
-            */
-            
-            // Create the downsampling object 
-            pcl::VoxelGrid<pcl::PointXYZI> sor;
-            sor.setInputCloud(cloud);
-            sor.setLeafSize(0.1f,0.1f,0.1f);
-            sor.filter(*filtered_cloud);
-
-            pub.publish(filtered_cloud); 
-
-
-            std::cout<< " " << filtered_cloud->points[1].z << " " << std::endl;
-        
-        }
-
-    private:
-        ros::NodeHandle n; 
-        ros::Publisher pub;
-        ros::Subscriber sub;
-};
+    sensor_msgs::PointCloud2 ros_pc2_out;
+    pcl::toROSMsg(*pcl_pc_out, ros_pc2_out);
+    downsampled_pub.publish(ros_pc2_out);
+    
+    std::cout << "after: " << pcl_pc_out->width * pcl_pc_out->height << "points" << std::endl;
+}
 
 int main(int argc, char **argv){
+    
     ros::init(argc, argv, "downsampling");
-    SubscribeAndPublish SAPObject;
+    ros::NodeHandle nh;
+    ros::Subscriber point_cloud_sub = nh.subscribe<sensor_msgs::PointCloud2>("/passthrough/filtered_cloud",1,PointCloudCallBack);
+    
+    ros::NodeHandle private_nh("~");
+    downsampled_pub = private_nh.advertise<sensor_msgs::PointCloud2>("downsampled_cloud",100); 
     ros::spin();
     return 0;
 }

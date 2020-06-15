@@ -4,54 +4,38 @@
 #include <iostream>
 #include <pcl/point_types.h>
 #include <pcl/filters/radius_outlier_removal.h>
+#include <sensor_msgs/PointCloud2.h>
 
+ros::Publisher outremoved_pub;
 
-typedef pcl::PointCloud<pcl::PointXYZI> PointCloud;
-//typedef pcl::PointCloud<pcl::PointXYZRGB> PointType;
+void PointCloudCallBack(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in){
+    pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_in(new pcl::PointCloud<pcl::PointXYZI>);
+    pcl::fromROSMsg(*ros_pc2_in, *pcl_pc_in);
 
-class SubscribeAndPublish{
-    public:
-        SubscribeAndPublish(){
-            pub = n.advertise<PointCloud>("removed",1);
-            sub = n.subscribe("downsampled", 1, &SubscribeAndPublish::callback, this);
-        }
-        
-        void callback(const PointCloud input){
-            //.... do something with the input and generate the output...
-            pcl::PointCloud<pcl::PointXYZI>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZI>);
-            pcl::PointCloud<pcl::PointXYZI>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZI>);
-            
-            cloud->header.frame_id="removed";
-            cloud->width = input.width;
-            cloud->height= input.height;
-            cloud->points.resize(cloud->width * cloud->height);
-            cloud->points = input.points;  
-            //std::cout <<cloud->height<<" "<< cloud->width <<" ";
+    std::cout << std:: endl;
+    std::cout << "before:" << pcl_pc_in->width * pcl_pc_in->height << "points" << std::endl;
 
-            pcl::RadiusOutlierRemoval<pcl::PointXYZI> outrem;
-            // build the filter
-            outrem.setInputCloud(cloud);
-            outrem.setRadiusSearch(0.8);
-            outrem.setMinNeighborsInRadius (2);
-            // apply filter
-            outrem.filter (*filtered_cloud);
-            
+    pcl::RadiusOutlierRemoval<pcl::PointXYZI> outrem;
+    outrem.setInputCloud(pcl_pc_in);
+    outrem.setRadiusSearch(0.8);
+    outrem.setMinNeighborsInRadius(2);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_out(new pcl::PointCloud<pcl::PointXYZI>);
+    outrem.filter(*pcl_pc_out);
 
-            pub.publish(filtered_cloud); 
-            
-            std::cout << " " << filtered_cloud->points[1].z <<" "<< std::endl;        
-        
-        }
+    sensor_msgs::PointCloud2 ros_pc2_out;
+    pcl::toROSMsg(*pcl_pc_out, ros_pc2_out);
+    outremoved_pub.publish(ros_pc2_out);
+    std::cout << "after: " << pcl_pc_out->width * pcl_pc_out->height << "points" << std::endl;
 
-    private:
-        ros::NodeHandle n; 
-        ros::Publisher pub;
-        ros::Subscriber sub;
-};
+}
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "removing");
-    SubscribeAndPublish SAPObject;
+    ros::NodeHandle nh;
+    ros::Subscriber point_cloud_sub = nh.subscribe<sensor_msgs::PointCloud2>("/downsampling/downsampled_cloud",1,PointCloudCallBack);
+
+    ros::NodeHandle private_nh("~");
+    outremoved_pub = private_nh.advertise<sensor_msgs::PointCloud2>("outremoved_cloud",100); 
     ros::spin();
     return 0;
 }

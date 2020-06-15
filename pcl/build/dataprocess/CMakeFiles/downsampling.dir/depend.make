@@ -292,12 +292,8 @@ dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/exceptions.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/boost.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/filter.h
-dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/filter_indices.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/filter.hpp
-dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/filter_indices.hpp
-dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/passthrough.hpp
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/voxel_grid.hpp
-dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/passthrough.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/filters/voxel_grid.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/for_each_type.h
 dataprocess/CMakeFiles/downsampling.dir/src/downsampling.cpp.o: /usr/include/pcl-1.8/pcl/impl/cloud_iterator.hpp

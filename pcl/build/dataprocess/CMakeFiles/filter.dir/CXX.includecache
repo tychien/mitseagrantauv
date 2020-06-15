@@ -19,6 +19,8 @@ pcl/point_types.h
 -
 pcl/filters/passthrough.h
 -
+sensor_msgs/PointCloud2.h
+-
 
 /opt/ros/melodic/include/pcl_conversions/pcl_conversions.h
 vector
