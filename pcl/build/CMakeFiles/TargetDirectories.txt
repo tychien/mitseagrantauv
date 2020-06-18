@@ -40,6 +40,7 @@
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/install.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/list_install_components.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/test.dir
+/home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/eucluster.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/segmentation.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/dataprocess_generate_messages_py.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/dataprocess_generate_messages_lisp.dir

@@ -264,7 +264,7 @@ gtest/googlemock/preinstall: gtest/googlemock/gtest/preinstall
 gtest/googlemock/CMakeFiles/gmock_main.dir/all:
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=26,27,28,29 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=28,29,30,31 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -296,7 +296,7 @@ clean: gtest/googlemock/CMakeFiles/gmock_main.dir/clean
 gtest/googlemock/CMakeFiles/gmock.dir/all:
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=23,24,25 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=25,26,27 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -347,7 +347,7 @@ gtest/googlemock/gtest/preinstall:
 gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all: gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=32,33 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=34,35 "Built target gtest_main"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -379,7 +379,7 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
 gtest/googlemock/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=30,31 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=32,33 "Built target gtest"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -408,6 +408,7 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory dataprocess
 
 # Convenience name for "all" pass in the directory.
+dataprocess/all: dataprocess/CMakeFiles/eucluster.dir/all
 dataprocess/all: dataprocess/CMakeFiles/segmentation.dir/all
 dataprocess/all: dataprocess/CMakeFiles/filter.dir/all
 dataprocess/all: dataprocess/CMakeFiles/dataprocess_generate_messages.dir/all
@@ -422,6 +423,7 @@ dataprocess/all: dataprocess/CMakeFiles/listen.dir/all
 .PHONY : dataprocess/all
 
 # Convenience name for "clean" pass in the directory.
+dataprocess/clean: dataprocess/CMakeFiles/eucluster.dir/clean
 dataprocess/clean: dataprocess/CMakeFiles/segmentation.dir/clean
 dataprocess/clean: dataprocess/CMakeFiles/dataprocess_generate_messages_py.dir/clean
 dataprocess/clean: dataprocess/CMakeFiles/dataprocess_generate_messages_lisp.dir/clean
@@ -535,13 +537,50 @@ dataprocess/preinstall:
 .PHONY : dataprocess/preinstall
 
 #=============================================================================
+# Target rules for target dataprocess/CMakeFiles/eucluster.dir
+
+# All Build rule for target.
+dataprocess/CMakeFiles/eucluster.dir/all:
+	$(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/depend
+	$(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=21,22 "Built target eucluster"
+.PHONY : dataprocess/CMakeFiles/eucluster.dir/all
+
+# Include target in all.
+all: dataprocess/CMakeFiles/eucluster.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+dataprocess/CMakeFiles/eucluster.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tychien/mitseagrantauv/pcl/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/eucluster.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tychien/mitseagrantauv/pcl/build/CMakeFiles 0
+.PHONY : dataprocess/CMakeFiles/eucluster.dir/rule
+
+# Convenience name for target.
+eucluster: dataprocess/CMakeFiles/eucluster.dir/rule
+
+.PHONY : eucluster
+
+# clean rule for target.
+dataprocess/CMakeFiles/eucluster.dir/clean:
+	$(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/clean
+.PHONY : dataprocess/CMakeFiles/eucluster.dir/clean
+
+# clean rule for target.
+clean: dataprocess/CMakeFiles/eucluster.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target dataprocess/CMakeFiles/segmentation.dir
 
 # All Build rule for target.
 dataprocess/CMakeFiles/segmentation.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/segmentation.dir/build.make dataprocess/CMakeFiles/segmentation.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/segmentation.dir/build.make dataprocess/CMakeFiles/segmentation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=42,43 "Built target segmentation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=44,45 "Built target segmentation"
 .PHONY : dataprocess/CMakeFiles/segmentation.dir/all
 
 # Include target in all.
@@ -646,7 +685,7 @@ clean: dataprocess/CMakeFiles/dataprocess_generate_messages_lisp.dir/clean
 dataprocess/CMakeFiles/filter.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/filter.dir/build.make dataprocess/CMakeFiles/filter.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/filter.dir/build.make dataprocess/CMakeFiles/filter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=21,22 "Built target filter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=23,24 "Built target filter"
 .PHONY : dataprocess/CMakeFiles/filter.dir/all
 
 # Include target in all.
@@ -1302,7 +1341,7 @@ clean: dataprocess/CMakeFiles/nodelet_generate_messages_nodejs.dir/clean
 dataprocess/CMakeFiles/passthrough.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/passthrough.dir/build.make dataprocess/CMakeFiles/passthrough.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=38,39 "Built target passthrough"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=40,41 "Built target passthrough"
 .PHONY : dataprocess/CMakeFiles/passthrough.dir/all
 
 # Include target in all.
@@ -1563,7 +1602,7 @@ clean: dataprocess/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/cl
 dataprocess/CMakeFiles/remove_outliers.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/remove_outliers.dir/build.make dataprocess/CMakeFiles/remove_outliers.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/remove_outliers.dir/build.make dataprocess/CMakeFiles/remove_outliers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=40,41 "Built target remove_outliers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=42,43 "Built target remove_outliers"
 .PHONY : dataprocess/CMakeFiles/remove_outliers.dir/all
 
 # Include target in all.
@@ -1792,7 +1831,7 @@ clean: dataprocess/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/c
 dataprocess/CMakeFiles/listen2.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/listen2.dir/build.make dataprocess/CMakeFiles/listen2.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/listen2.dir/build.make dataprocess/CMakeFiles/listen2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=36,37 "Built target listen2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=38,39 "Built target listen2"
 .PHONY : dataprocess/CMakeFiles/listen2.dir/all
 
 # Include target in all.
@@ -2044,7 +2083,7 @@ clean: dataprocess/CMakeFiles/cluster.dir/clean
 dataprocess/CMakeFiles/talk.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/talk.dir/build.make dataprocess/CMakeFiles/talk.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/talk.dir/build.make dataprocess/CMakeFiles/talk.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=44,45 "Built target talk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=46,47 "Built target talk"
 .PHONY : dataprocess/CMakeFiles/talk.dir/all
 
 # Include target in all.
@@ -2856,7 +2895,7 @@ clean: dataprocess/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/cle
 dataprocess/CMakeFiles/listen.dir/all:
 	$(MAKE) -f dataprocess/CMakeFiles/listen.dir/build.make dataprocess/CMakeFiles/listen.dir/depend
 	$(MAKE) -f dataprocess/CMakeFiles/listen.dir/build.make dataprocess/CMakeFiles/listen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=34,35 "Built target listen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tychien/mitseagrantauv/pcl/build/CMakeFiles --progress-num=36,37 "Built target listen"
 .PHONY : dataprocess/CMakeFiles/listen.dir/all
 
 # Include target in all.

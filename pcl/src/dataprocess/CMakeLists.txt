@@ -64,6 +64,9 @@ target_link_libraries(segmentation ${catkin_LIBRARIES})
 add_executable(cluster src/cluster.cpp)
 target_link_libraries(cluster ${catkin_LIBRARIES})
 
+add_executable(eucluster src/Euclidean_cluster.cpp)
+target_link_libraries(eucluster ${catkin_LIBRARIES})
+
 if(catkin_EXPORTED_TARGETS)
   add_dependencies(cluster ${catkin_EXPORTED_TARGETS})
 endif()

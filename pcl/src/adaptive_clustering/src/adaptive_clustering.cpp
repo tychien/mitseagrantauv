@@ -104,7 +104,6 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
     std::cout << "hi"<< std::endl; 
     /*** Output ***/
   if(cloud_filtered_pub_.getNumSubscribers() > 0) {
-      std::cout << "hi in if loop" << std::endl;
     pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_out(new pcl::PointCloud<pcl::PointXYZI>);
     sensor_msgs::PointCloud2 ros_pc2_out;
     pcl::copyPointCloud(*pcl_pc_in, *pc_indices, *pcl_pc_out);

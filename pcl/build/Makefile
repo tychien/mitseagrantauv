@@ -285,6 +285,19 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named eucluster
+
+# Build rule for target.
+eucluster: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eucluster
+.PHONY : eucluster
+
+# fast build rule for target.
+eucluster/fast:
+	$(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/build
+.PHONY : eucluster/fast
+
+#=============================================================================
 # Target rules for targets named segmentation
 
 # Build rule for target.
@@ -1827,6 +1840,7 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... eucluster"
 	@echo "... segmentation"
 	@echo "... dataprocess_generate_messages_py"
 	@echo "... dataprocess_generate_messages_lisp"

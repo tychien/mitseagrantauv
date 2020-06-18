@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+dataprocess/CMakeFiles/eucluster.dir/rule:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/eucluster.dir/rule
+.PHONY : dataprocess/CMakeFiles/eucluster.dir/rule
+
+# Convenience name for target.
+eucluster: dataprocess/CMakeFiles/eucluster.dir/rule
+
+.PHONY : eucluster
+
+# fast build rule for target.
+eucluster/fast:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/build
+.PHONY : eucluster/fast
+
+# Convenience name for target.
 dataprocess/CMakeFiles/segmentation.dir/rule:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/segmentation.dir/rule
 .PHONY : dataprocess/CMakeFiles/segmentation.dir/rule
@@ -1727,6 +1742,33 @@ actionlib_msgs_generate_messages_py/fast:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make dataprocess/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 .PHONY : actionlib_msgs_generate_messages_py/fast
 
+src/Euclidean_cluster.o: src/Euclidean_cluster.cpp.o
+
+.PHONY : src/Euclidean_cluster.o
+
+# target to build an object file
+src/Euclidean_cluster.cpp.o:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/src/Euclidean_cluster.cpp.o
+.PHONY : src/Euclidean_cluster.cpp.o
+
+src/Euclidean_cluster.i: src/Euclidean_cluster.cpp.i
+
+.PHONY : src/Euclidean_cluster.i
+
+# target to preprocess a source file
+src/Euclidean_cluster.cpp.i:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/src/Euclidean_cluster.cpp.i
+.PHONY : src/Euclidean_cluster.cpp.i
+
+src/Euclidean_cluster.s: src/Euclidean_cluster.cpp.s
+
+.PHONY : src/Euclidean_cluster.s
+
+# target to generate assembly for a file
+src/Euclidean_cluster.cpp.s:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/src/Euclidean_cluster.cpp.s
+.PHONY : src/Euclidean_cluster.cpp.s
+
 src/cluster.o: src/cluster.cpp.o
 
 .PHONY : src/cluster.o
@@ -1981,6 +2023,7 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... eucluster"
 	@echo "... segmentation"
 	@echo "... dataprocess_generate_messages_py"
 	@echo "... dataprocess_generate_messages_lisp"
@@ -2087,6 +2130,9 @@ help:
 	@echo "... nodelet_topic_tools_gencfg"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... src/Euclidean_cluster.o"
+	@echo "... src/Euclidean_cluster.i"
+	@echo "... src/Euclidean_cluster.s"
 	@echo "... src/cluster.o"
 	@echo "... src/cluster.i"
 	@echo "... src/cluster.s"
