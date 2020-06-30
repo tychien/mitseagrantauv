@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/tychien/mitseagrantauv/pcl/build/gtest/cmake_install.cmake")
+  include("/home/tychien/mitseagrantauv/pcl/build/nmea_msgs/cmake_install.cmake")
   include("/home/tychien/mitseagrantauv/pcl/build/dataprocess/cmake_install.cmake")
   include("/home/tychien/mitseagrantauv/pcl/build/adaptive_clustering/cmake_install.cmake")
 

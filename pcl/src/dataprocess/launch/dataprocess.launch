@@ -1,0 +1,9 @@
+<launch>
+
+    <node pkg="dataprocess" type="passthrough" name="passthrough" />
+    <node pkg="dataprocess" type="downsampling" name="downsampling" />
+
+    <node pkg="dataprocess" type="remove_outliers" name="remove_outliers" />
+
+    <node pkg="dataprocess" type="cluster" name="cluster" />
+</launch>

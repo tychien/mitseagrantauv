@@ -25,7 +25,7 @@ float z_axis_max_;
 int cluster_size_min_;
 int cluster_size_max_;
 
-const int region_max_ = 100; // Change this value to match how far you want to detect.
+const int region_max_ = 10000; // Change this value to match how far you want to detect.
 int regions_[100];
 uint32_t cluster_array_seq_ = 0;
 uint32_t pose_array_seq_ = 0;
@@ -66,11 +66,11 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
   }
   
   /*** Euclidean clustering ***/
-  float tolerance = 3.0;
+  float tolerance = 0.0;
   std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr > > clusters;
   
   for(int i = 0; i < region_max_; i++) {
-    tolerance += 1.0;
+    tolerance += 0.1;
     if(indices_array[i].size() > cluster_size_min_) {
       boost::shared_ptr<std::vector<int> > indices_array_ptr(new std::vector<int>(indices_array[i]));
       pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
@@ -120,7 +120,7 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
       cluster_array.clusters.push_back(ros_pc2_out);
     }
     
-    //if(pose_array_pub_.getNumSubscribers() > 0) {
+    if(pose_array_pub_.getNumSubscribers() > 0) {
       Eigen::Vector4f centroid;
       pcl::compute3DCentroid(*clusters[i], centroid);
       
@@ -131,7 +131,7 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
       pose.orientation.w = 1;
       pose_array.poses.push_back(pose);
         std::cout <<"id="<<i<< " x="<<pose.position.x<<" ,y="<<pose.position.y<<" ,z="<<pose.position.z<< std::endl; 
-    //}
+    }
     
     if(marker_array_pub_.getNumSubscribers() > 0) {
       Eigen::Vector4f min, max;
@@ -173,12 +173,12 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
   	marker.points.push_back(p[i]);
       }
       
-      marker.scale.x = 0.02;
+      marker.scale.x = 0.3;
       marker.color.a = 1.0;
-      marker.color.r = 0.0;
+      marker.color.r = 1.0;
       marker.color.g = 1.0;
       marker.color.b = 0.5;
-      marker.lifetime = ros::Duration(0.1);
+      marker.lifetime = ros::Duration(2.5);
       marker_array.markers.push_back(marker);
     }
   }
@@ -223,8 +223,8 @@ int main(int argc, char **argv) {
   private_nh.param<bool>("print_fps", print_fps_, false);
   private_nh.param<float>("z_axis_min", z_axis_min_, -2.4);
   private_nh.param<float>("z_axis_max", z_axis_max_, 0.5);
-  private_nh.param<int>("cluster_size_min", cluster_size_min_, 2);
-  private_nh.param<int>("cluster_size_max", cluster_size_max_, 200);
+  private_nh.param<int>("cluster_size_min", cluster_size_min_, 30);
+  private_nh.param<int>("cluster_size_max", cluster_size_max_, 700000);
   
   // Divide the point cloud into nested circular regions centred at the sensor.
   // For more details, see our IROS-17 paper "Online learning for human classification in 3D LiDAR-based tracking"

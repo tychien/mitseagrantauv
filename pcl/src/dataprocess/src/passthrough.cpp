@@ -38,7 +38,8 @@ int main(int argc, char **argv){
     
     ros::init(argc, argv, "passthrough");
     ros::NodeHandle nh;
-    ros::Subscriber point_cloud_sub = nh.subscribe<sensor_msgs::PointCloud2>("velodyne_points", 1, PointCloudCallBack);
+    //ros::Subscriber point_cloud_sub = nh.subscribe<sensor_msgs::PointCloud2>("velodyne_points", 1, PointCloudCallBack);
+    ros::Subscriber point_cloud_sub = nh.subscribe<sensor_msgs::PointCloud2>("/broadband_radar/channel_1/pointcloud", 1, PointCloudCallBack); 
     ros::NodeHandle private_nh("~");
     filtered_pub = private_nh.advertise<sensor_msgs::PointCloud2>("filtered_cloud",100);
     ros::spin();

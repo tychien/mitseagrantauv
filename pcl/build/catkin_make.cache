@@ -1,2 +1,2 @@
-adaptive_clustering:dataprocess
+adaptive_clustering:dataprocess:nmea_msgs
 -DCATKIN_DEVEL_PREFIX=/home/tychien/mitseagrantauv/pcl/devel -DCMAKE_INSTALL_PREFIX=/home/tychien/mitseagrantauv/pcl/install -G Unix Makefiles
