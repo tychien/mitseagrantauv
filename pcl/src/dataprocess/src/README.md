@@ -1,3 +1,5 @@
+copy the mitseagrantauv/pcl ros package to your catkin repository then build 
+
 # PCL DataProcessing 
 
 ![rqt_graph](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/rosgraph.png)
