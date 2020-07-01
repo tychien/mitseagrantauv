@@ -1,4 +1,4 @@
-copy the mitseagrantauv/pcl ros package to your catkin repository then build 
+copy the mitseagrantauv/pcl ros package to your catkin workspace then build 
 
 # PCL DataProcessing 
 
