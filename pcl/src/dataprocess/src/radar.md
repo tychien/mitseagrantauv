@@ -1,10 +1,17 @@
 $ catkin_make
+
 $ roscore
+
 $ rosbag play master.bag
+
 $ rosrun dataprocess passthrough
+
 $ rosrun dataprocess downsampling 
+
 $ rosrun dataprocess remove_outliers
+
 $ rosrun dataprocess cluster
+
 $ rosrun rviz
 
 
