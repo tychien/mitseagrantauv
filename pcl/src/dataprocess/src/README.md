@@ -25,7 +25,8 @@ rosrun dataprocess remove_outliers
 
 [outliers_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/remove_outliers.cpp)
 
-### 4. After removing, cluster! (not showing anything in rostopic echo /clustered)
+### 4. After removing the ouliers, cluster!
+
 ```bash
 rosrun dataprocess cluster
 ```
