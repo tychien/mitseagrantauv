@@ -42,5 +42,5 @@ rosrun dataprocess cluster
 |![raw](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/radar1.png)|![filtered](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/passthrough.png)
 | Downsampled | Outlier_removed |
 |![downsampled](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/downsampling.png)|![outlier_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/removed.png)|
-|video|
-|![video](
+|cluster|
+|![cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/clustered.png)|
