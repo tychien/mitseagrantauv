@@ -43,4 +43,4 @@ rosrun dataprocess cluster
 | Downsampled | Outlier_removed |
 |![downsampled](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/downsampling.png)|![outlier_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/removed.png)|
 |cluster|
-|![cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/cluster.png)|
+|![cluster](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/clustered.png)|
