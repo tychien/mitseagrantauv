@@ -1,3 +1,13 @@
+$ catkin_make
+$ roscore
+$ rosbag play master.bag
+$ rosrun dataprocess passthrough
+$ rosrun dataprocess downsampling 
+$ rosrun dataprocess remove_outliers
+$ rosrun dataprocess cluster
+$ rosrun rviz
+
+
 # PCL DataProcessing 
 
 ![rqt_graph](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/rosgraph.png)
