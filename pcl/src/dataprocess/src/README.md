@@ -20,7 +20,7 @@ rosrun dataprocess downsampling
 
 ### 3. After downsampling, remove the outliers
 ```bash
-rosrun dataprocess remove_outliers
+rosrun dataprocess remove_outliers 
 ```
 
 [outliers_removal](https://github.com/tychien/mitseagrantauv/blob/master/pcl/src/dataprocess/src/remove_outliers.cpp)
