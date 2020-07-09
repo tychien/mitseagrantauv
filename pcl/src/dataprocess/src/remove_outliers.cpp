@@ -18,7 +18,7 @@ void PointCloudCallBack(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in){
     pcl::RadiusOutlierRemoval<pcl::PointXYZI> outrem;
     outrem.setInputCloud(pcl_pc_in);
     outrem.setRadiusSearch(0.1);
-    outrem.setMinNeighborsInRadius(1);
+    outrem.setMinNeighborsInRadius(0.8);
     pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_pc_out(new pcl::PointCloud<pcl::PointXYZI>);
     outrem.filter(*pcl_pc_out);
 
