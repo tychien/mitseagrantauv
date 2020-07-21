@@ -539,6 +539,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "nmea_msgs/CMakeFiles/nmea_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "nmea_msgs/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "nmea_msgs/CMakeFiles/nmea_msgs_generate_messages_eus.dir/DependInfo.cmake"
+  "dataprocess/CMakeFiles/client.dir/DependInfo.cmake"
   "dataprocess/CMakeFiles/eucluster.dir/DependInfo.cmake"
   "dataprocess/CMakeFiles/remove_outliers.dir/DependInfo.cmake"
   "dataprocess/CMakeFiles/listen2.dir/DependInfo.cmake"

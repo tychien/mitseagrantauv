@@ -571,6 +571,19 @@ nmea_msgs_generate_messages_eus/fast:
 .PHONY : nmea_msgs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) -f dataprocess/CMakeFiles/client.dir/build.make dataprocess/CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
 # Target rules for targets named eucluster
 
 # Build rule for target.
@@ -2083,6 +2096,7 @@ help:
 	@echo "... nmea_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... nmea_msgs_generate_messages_eus"
+	@echo "... client"
 	@echo "... eucluster"
 	@echo "... remove_outliers"
 	@echo "... listen2"

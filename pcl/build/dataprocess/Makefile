@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+dataprocess/CMakeFiles/client.dir/rule:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/client.dir/rule
+.PHONY : dataprocess/CMakeFiles/client.dir/rule
+
+# Convenience name for target.
+client: dataprocess/CMakeFiles/client.dir/rule
+
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/client.dir/build.make dataprocess/CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+# Convenience name for target.
 dataprocess/CMakeFiles/eucluster.dir/rule:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f CMakeFiles/Makefile2 dataprocess/CMakeFiles/eucluster.dir/rule
 .PHONY : dataprocess/CMakeFiles/eucluster.dir/rule
@@ -1694,6 +1709,33 @@ src/Euclidean_cluster.cpp.s:
 	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/eucluster.dir/build.make dataprocess/CMakeFiles/eucluster.dir/src/Euclidean_cluster.cpp.s
 .PHONY : src/Euclidean_cluster.cpp.s
 
+src/client.o: src/client.cpp.o
+
+.PHONY : src/client.o
+
+# target to build an object file
+src/client.cpp.o:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/client.dir/build.make dataprocess/CMakeFiles/client.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
+
+src/client.i: src/client.cpp.i
+
+.PHONY : src/client.i
+
+# target to preprocess a source file
+src/client.cpp.i:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/client.dir/build.make dataprocess/CMakeFiles/client.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
+
+src/client.s: src/client.cpp.s
+
+.PHONY : src/client.s
+
+# target to generate assembly for a file
+src/client.cpp.s:
+	cd /home/tychien/mitseagrantauv/pcl/build && $(MAKE) -f dataprocess/CMakeFiles/client.dir/build.make dataprocess/CMakeFiles/client.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
+
 src/cluster.o: src/cluster.cpp.o
 
 .PHONY : src/cluster.o
@@ -1948,6 +1990,7 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... client"
 	@echo "... eucluster"
 	@echo "... remove_outliers"
 	@echo "... listen2"
@@ -2053,6 +2096,9 @@ help:
 	@echo "... src/Euclidean_cluster.o"
 	@echo "... src/Euclidean_cluster.i"
 	@echo "... src/Euclidean_cluster.s"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
 	@echo "... src/cluster.o"
 	@echo "... src/cluster.i"
 	@echo "... src/cluster.s"

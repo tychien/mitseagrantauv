@@ -69,6 +69,7 @@
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/install.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/list_install_components.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/test.dir
+/home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/client.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/eucluster.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/remove_outliers.dir
 /home/tychien/mitseagrantauv/pcl/build/dataprocess/CMakeFiles/listen2.dir

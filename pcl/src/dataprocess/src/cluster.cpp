@@ -66,7 +66,7 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& ros_pc2_in) {
   }
   
   /*** Euclidean clustering ***/
-  float tolerance = 0.0;
+  float tolerance = 0.5;
   std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr, Eigen::aligned_allocator<pcl::PointCloud<pcl::PointXYZI>::Ptr > > clusters;
   
   for(int i = 0; i < region_max_; i++) {
@@ -224,7 +224,7 @@ int main(int argc, char **argv) {
   private_nh.param<float>("z_axis_min", z_axis_min_, -2.4);
   private_nh.param<float>("z_axis_max", z_axis_max_, 0.5);
   private_nh.param<int>("cluster_size_min", cluster_size_min_, 30);
-  private_nh.param<int>("cluster_size_max", cluster_size_max_, 700000);
+  private_nh.param<int>("cluster_size_max", cluster_size_max_, 7000);
   
   // Divide the point cloud into nested circular regions centred at the sensor.
   // For more details, see our IROS-17 paper "Online learning for human classification in 3D LiDAR-based tracking"
