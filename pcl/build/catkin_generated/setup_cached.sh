@@ -7,4 +7,5 @@
 # new environment variables
 
 # modified environment variables
+export PATH="/opt/ros/melodic/bin:/home/tychien/moos-ivp-aquaticus-aro-trunk/trunk/bin:/home/tychien/moos-ivp-Tim/bin:/home/tychien/moos-ivp-extend/bin:/home/tychien/moos-ivp/bin:/home/tychien/.local/bin:/home/tychien/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PWD="/home/tychien/mitseagrantauv/pcl/build"
