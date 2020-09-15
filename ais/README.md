@@ -6,7 +6,7 @@
 g++ -o ntuais_filter ntuais_filter.cpp
 ```
 
-1.  run ntuais_filter 
+2.  run ntuais_filter 
 
 ```bash
 ./ntuais_filter --date=yyyy-mm-dd --range=km
