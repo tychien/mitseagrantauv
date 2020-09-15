@@ -37,33 +37,47 @@ double calculateDistance(double lat1, double long1, double lat2, double long2)
     return dist;
 }
 
-int main()
+int main(int argc, char **argv)
 {
+    //----------------------------------
+    //handling input words
+    string search_date;
+    string search_range;
+    for(int i=1; i<argc; i++) {
+     string argi = argv[i];
+     if(argi.find("--date=") == 0)
+       search_date = argi.substr(7);
+     if(argi.find("--range=")== 0)
+       search_range= argi.substr(8); 
+    }
+    if(search_date == "") {
+     cout << "Usage: --date=yyyy-mm-dd --range=km" << endl;
+     exit(1);
+    }
+    if(search_range== ""){
+        cout << "Usage: --date=yyyy-mm-dd --range=km" << endl;
+        exit(1);
+    }
+    
+    string csvfile = search_date.substr(0,4)+search_date.substr(5,2)+".csv";
+
+
 
     //readfile
     fstream file;
-    file.open("201903.csv");    //輸入檔案名稱
-    string date = "2019-03-05"; //輸入欲查詢日期
+    file.open(csvfile);    //輸入檔案名稱
+    //string date = "2019-04-15"; //輸入欲查詢日期
+    string date = search_date;
     string line;
     size_t pos=0;
     size_t pos_comma=0;
     string token;
-    string mmsi;
-    string sog;
-    string longitude;
-    string latitude;
-    string cog;
-    string ship_type;
-    string reference_position_A;
-    string reference_position_B;
-    string reference_position_C;
-    string reference_position_D;
-    string maxDraught;
-    string grossTonnage;
-    string recordTime;
+    string mmsi,sog,longitude,latitude,cog,ship_type,
+           reference_position_A,reference_position_B,reference_position_C,reference_position_D,
+           maxDraught,grossTonnage,recordTime;
     double station_position_longitude = 120.273155; //輸入基點精度
     double station_position_latitude = 24.000825;   //輸入基點緯度
-    double range = 5;                               //輸入欲查詢半徑（公里）
+    double range = stod(search_range);               //輸入欲查詢半徑（公里）
     vector<string> mmsi_array;
     vector<string> ship_array;
     int j = 1;  //數第幾行
@@ -94,10 +108,6 @@ int main()
                 }
             }
            
-            //if(!same_ship){
-            //    shipname_array.push_back(shipname);
-            //    same_ship = false;
-            //}
                 //~檢查有沒有相同船名，若無就加入新船-----------------
             //~MMSI
         
@@ -243,6 +253,8 @@ int main()
         cout << shipcount << "/ " << *it <<"\n"<< endl;
         shipcount ++;
     }
+    cout << "filename=" << csvfile << endl;
+    cout << "search_range=" << search_range << endl;
     //~印出所有船--------------
 
     //輸出到.csv檔案
@@ -253,8 +265,8 @@ int main()
                 outputfilecsv+="km.csv";
         std::ofstream output_file(outputfilecsv);
         for(const auto &e : ship_array) output_file << e << "\n";
+    
+            
     //~輸出到.csv檔案
-    return 0;
+        return 0;
 }
-
-
