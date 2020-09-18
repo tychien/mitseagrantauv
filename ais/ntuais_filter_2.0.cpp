@@ -34,7 +34,7 @@ NTUAIS_filter::~NTUAIS_filter()
 }
 
 //------------------------------------------------------------
-// OnNewLine
+// GetSearchDate
 
 bool NTUAIS_filter::GetSearchDate(string input)
 {
@@ -42,26 +42,56 @@ bool NTUAIS_filter::GetSearchDate(string input)
     return 0;
 }
 
+//------------------------------------------------------------
+// GetSearchRange
 bool NTUAIS_filter::GetSearchRange(string input)
 {
     m_search_range = input;
     return 0;
 }
 
+//-------------------------------------------------------------
+// ReturnDate
 string NTUAIS_filter::ReturnDate()
 {
     return m_search_date;
 }
+
+//-------------------------------------------------------------
+// ReturnRange
 
 string NTUAIS_filter::ReturnRange()
 {
     return m_search_range;
 }
 
+
+//-------------------------------------------------------------
+// ReadFile
+
+void NTUAIS_filter::ReadFile()
+{
+
+}
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------
+// toRad 
+
 double toRad(double degree)
 {
     return degree/180*3.1415926;
 }
+
+//-------------------------------------------------------------
+// calculatedistance
 
 double calculateDistance(double lat1, double long1, double lat2, double long2)
 {
@@ -71,6 +101,5 @@ double calculateDistance(double lat1, double long1, double lat2, double long2)
     dist = acos(dist);
     dist = 6371 * dist;
     return dist;
-
 
 }

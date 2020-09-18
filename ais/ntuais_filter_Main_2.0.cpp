@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     }
 
     string csvfile  = ntuais_filter.ReturnDate().substr(0,4)+ntuais_filter.ReturnDate().substr(5,2)+".csv";
-   
+
     cout << ntuais_filter.ReturnDate() << endl;
     cout << ntuais_filter.ReturnRange() <<endl;
 
