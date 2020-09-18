@@ -20,7 +20,7 @@ class NTUAIS_filter
         bool    GetSearchRange(string input);
         string  ReturnDate();
         string  ReturnRange();
-        void    ReadFile(string csvfile);
+        string  ReadFile(string csvfile);
 
         double  toRad(double degree);
         double  calculateDistance(double lat1, double long1, double lat2, double long2);

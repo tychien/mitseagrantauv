@@ -67,16 +67,21 @@ string NTUAIS_filter::ReturnRange()
 
 
 //-------------------------------------------------------------
-// ReadFile
+// ReadFile on Certain Date then output the line
 
-void NTUAIS_filter::ReadFile(string csvfile)
+string NTUAIS_filter::ReadFile(string csvfile)
 {
     fstream file;
     file.open(csvfile);
     string line;
     while(getline(file,line)){
         bool same_ship = false;
-        cout << line << endl;
+        size_t pos;
+        if((pos =line.find(ReturnDate())) != string::npos){
+            cout << pos << endl;
+            cout << line << endl;
+        }
+    return line;
     } 
 }
 
