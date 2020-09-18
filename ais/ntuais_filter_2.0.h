@@ -10,6 +10,24 @@
 
 using namespace std;
 
+struct  Ship{
+            string mmsi;
+            string sog;
+            string lon;
+            string lat;
+            string cog;
+            string ship_type;
+            string ref_pA;
+            string ref_pB;
+            string ref_pC;
+            string ref_pD;
+            double twoSUM(double a, double b){return a+b;};
+            string ship_length  = to_string(twoSUM(stod(ref_pA),stod(ref_pB)));
+            string ship_width   = to_string(twoSUM(stod(ref_pC),stod(ref_pD)));  
+            string recordtime;
+        };
+
+
 class NTUAIS_filter 
 {
     public:
@@ -20,12 +38,15 @@ class NTUAIS_filter
         bool    GetSearchRange(string input);
         string  ReturnDate();
         string  ReturnRange();
-        string  ReadFile(string csvfile);
+        vector<string>  ReadFile(string csvfile);
+        string  GetString(string line, int m);
 
         double  toRad(double degree);
         double  calculateDistance(double lat1, double long1, double lat2, double long2);
+        
+        void    BuildShip(NTUAIS_filter a);
 
-
+        vector<Ship> ship_array;
 
     protected:
         

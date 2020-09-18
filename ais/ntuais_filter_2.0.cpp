@@ -1,5 +1,5 @@
 /*
- * Author: Tim TingYuan Chien
+ * Author: Tim TingYuan Chien 錢定遠 r07525118@ntu.edu.tw
  * Version 2
  * In Version 2, the speed has been replaced by average speed in the searching range.
  */ 
@@ -67,29 +67,40 @@ string NTUAIS_filter::ReturnRange()
 
 
 //-------------------------------------------------------------
-// ReadFile on Certain Date then output the line
+// ReadFile on Certain Date then store them into ship_list
 
-string NTUAIS_filter::ReadFile(string csvfile)
+vector<string> NTUAIS_filter::ReadFile(string csvfile)
 {
+    vector<string> ship_list;
     fstream file;
     file.open(csvfile);
     string line;
     while(getline(file,line)){
         bool same_ship = false;
         size_t pos;
-        if((pos =line.find(ReturnDate())) != string::npos){
-            cout << pos << endl;
-            cout << line << endl;
-        }
-    return line;
-    } 
+        if((pos =line.find(ReturnDate())) != string::npos)
+            //cout << line << endl;
+            ship_list.push_back(line); 
+            //cout << "hey" << endl;
+    }
+    return ship_list;
 }
 
+//-------------------------------------------------------------
+// GetPosition for each line 
 
+string NTUAIS_filter::GetString(string line, int m)
+{
+    for(int n=1; n<=m; n++){
+        size_t pos_comma = line.find(",");
+        line.erase(0,pos_comma+1); 
+    } 
+    string get_line = line.substr(0,line.find(",")); 
+    return get_line;
+}
 
-
-
-
+//-------------------------------------------------------------
+// Ship Object
 
 
 

@@ -25,22 +25,40 @@ int main(int argc, char **argv)
         if(argi.find("--range=")==0)
             ntuais_filter.GetSearchRange(argi.substr(8));
     } 
+    
     if(ntuais_filter.ReturnDate()  == "" || (ntuais_filter.ReturnDate().size()!=10)){
         cout << "Usage: ./ntuais_filter --date=yyyy-mm-dd --range=km" << endl;
         exit(1);
     }
+    
     if(ntuais_filter.ReturnRange() == ""){
         cout << "Usage: ./ntuais_filter --date=yyyy-mm-dd --range=km" << endl;
         exit(1);
     }
 
-    string csvfile  = ntuais_filter.ReturnDate().substr(0,4)+ntuais_filter.ReturnDate().substr(5,2)+".csv";
+    string csvfile  = ntuais_filter.ReturnDate().substr(0,4)
+                    + ntuais_filter.ReturnDate().substr(5,2)
+                    + ".csv";
 
-    ntuais_filter.ReadFile(csvfile);
-    cout << ntuais_filter.ReturnDate() << endl;
-    cout << ntuais_filter.ReturnRange() <<endl;
+    vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages of that date
+     
 
-
-
+        
+    for(vector<string>::const_iterator i = ship_list.begin(); i!=ship_list.end(); i++){
+        // Ship ship;
+        //ship.mmsi   = ntuais_filter.GetString(*i,3);
+   /*      
+        Ship ship;
+        ship.mmsi   = ntuais_filter.GetString(*i,3);
+        ship.sog    = ntuais_filter.GetString(*i,6);
+        ship.lon    = ntuais_filter.GetString(*i,8);
+        ship.lat    = ntuais_filter.GetString(*i,9);
+        ship.cog    = ntuais_filter.GetString(*i,10);
+        ship.ship_type = ;
+        ship.ref_pA =;
+     */
+        cout << "MMSI=" << ntuais_filter.GetString(*i,3) << endl;
+    }
+    
     return 0;
 }
