@@ -34,8 +34,12 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    string csvfile  = search_date.substr(0,4)+search_date.substr(5,2)+".csv";
-   
+    string csvfile  = search_date.substr(0,4)+search_date.substr(5,2)+".csv";   
+    
+    fstream file;
+    file.open(csvfile);
+    string date = search_date;
+    string line;
 
 
 
