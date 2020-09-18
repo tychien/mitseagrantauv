@@ -10,7 +10,7 @@
 
 using namespace std;
 
-struct  Ship{
+struct Ship{
             string mmsi;
             string sog;
             string lon;
@@ -21,11 +21,10 @@ struct  Ship{
             string ref_pB;
             string ref_pC;
             string ref_pD;
-            double twoSUM(double a, double b){return a+b;};
-            string ship_length  = to_string(twoSUM(stod(ref_pA),stod(ref_pB)));
-            string ship_width   = to_string(twoSUM(stod(ref_pC),stod(ref_pD)));  
             string recordtime;
-        };
+            double ship_length;
+            double ship_width;    
+    };
 
 
 class NTUAIS_filter 
@@ -42,12 +41,14 @@ class NTUAIS_filter
         string  GetString(string line, int m);
 
         double  toRad(double degree);
-        double  calculateDistance(double lat1, double long1, double lat2, double long2);
+        double  CalculateDistance(double lat1, double long1, double lat2, double long2);
         
-        void    BuildShip(NTUAIS_filter a);
-
-        vector<Ship> ship_array;
-
+        
+        vector<struct Ship> ship_array;
+        struct Ship BuildShip(string s);
+        
+        double ReturnStationLat(){return station_Latitude;};
+        double ReturnStationLon(){return station_Longitude;};
     protected:
         
         string  m_search_date;

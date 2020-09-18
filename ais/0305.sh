@@ -1,1 +1,1 @@
-./ntuais_filter_2 --date=2020-03-05 --range=31
+./ntuais_filter_2 --date=2020-03-05 --range=310

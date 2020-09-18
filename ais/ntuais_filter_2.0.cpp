@@ -100,14 +100,30 @@ string NTUAIS_filter::GetString(string line, int m)
 }
 
 //-------------------------------------------------------------
-// Ship Object
+// BuildShip
 
+struct Ship NTUAIS_filter::BuildShip(string s)
+{
+    struct Ship ship;
+    ship.mmsi   = this->GetString(s,3);
+    ship.sog    = this->GetString(s,6);
+    ship.lon    = this->GetString(s,8);
+    ship.lat    = this->GetString(s,9);
+    ship.cog    = this->GetString(s,10);
+    ship.ship_type  = this->GetString(s,14);
+    ship.ref_pA = this->GetString(s,15);
+    ship.ref_pB = this->GetString(s,16);
+    ship.ref_pC = this->GetString(s,17);
+    ship.ref_pD = this->GetString(s,18);
+    ship.recordtime = this->GetString(s,25); 
+    return ship;
+};
 
 
 //-------------------------------------------------------------
 // toRad 
 
-double toRad(double degree)
+double NTUAIS_filter::toRad(double degree)
 {
     return degree/180*3.1415926;
 }
@@ -115,11 +131,11 @@ double toRad(double degree)
 //-------------------------------------------------------------
 // calculatedistance
 
-double calculateDistance(double lat1, double long1, double lat2, double long2)
+double NTUAIS_filter::CalculateDistance(double lat1, double long1, double lat2, double long2)
 {
     double dist;
-    dist =  sin(toRad(lat1)) * sin(toRad(lat2)) +
-            cos(toRad(lat1)) * cos(toRad(lat2)) * cos(toRad(long1 - long2));
+    dist =  sin(this->toRad(lat1)) * sin(this->toRad(lat2)) +
+            cos(this->toRad(lat1)) * cos(this->toRad(lat2)) * cos(this->toRad(long1 - long2));
     dist = acos(dist);
     dist = 6371 * dist;
     return dist;

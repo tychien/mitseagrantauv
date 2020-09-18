@@ -41,24 +41,30 @@ int main(int argc, char **argv)
                     + ".csv";
 
     vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages of that date
-     
-
-        
-    for(vector<string>::const_iterator i = ship_list.begin(); i!=ship_list.end(); i++){
-        // Ship ship;
-        //ship.mmsi   = ntuais_filter.GetString(*i,3);
-   /*      
-        Ship ship;
-        ship.mmsi   = ntuais_filter.GetString(*i,3);
-        ship.sog    = ntuais_filter.GetString(*i,6);
-        ship.lon    = ntuais_filter.GetString(*i,8);
-        ship.lat    = ntuais_filter.GetString(*i,9);
-        ship.cog    = ntuais_filter.GetString(*i,10);
-        ship.ship_type = ;
-        ship.ref_pA =;
-     */
-        cout << "MMSI=" << ntuais_filter.GetString(*i,3) << endl;
-    }
+/*******************************************************************************/
+    //Chop the String and Build the Ships and store them into a list;
     
+    for(vector<string>::const_iterator i = ship_list.begin(); i!=ship_list.end(); i++){
+        struct Ship ships   = ntuais_filter.BuildShip(*i);
+        double ship_length  = stod(ships.ref_pA)+stod(ships.ref_pB);
+        double ship_width   = stod(ships.ref_pC)+stod(ships.ref_pD);
+        
+        double ship_lat     = stod(ships.lat);
+        double ship_lon     = stod(ships.lon);
+        
+        ships.ship_length   = ship_length;
+        ships.ship_width    = ship_width;
+        double distant = ntuais_filter.CalculateDistance(ntuais_filter.ReturnStationLat(),ntuais_filter.ReturnStationLon(), ship_lat, ship_lon);
+        if(distant< stod(ntuais_filter.ReturnRange())) 
+            ntuais_filter.ship_array.push_back(ships); 
+    }
+/******************************************************************************/ 
+    int j =1;
+    for(vector<struct Ship>::const_iterator i = ntuais_filter.ship_array.begin(); i!=ntuais_filter.ship_array.end(); i++){
+        Ship ship = *i;
+        cout << ship.ship_length<< endl;
+        j++;
+    }
+    cout << j << endl;
     return 0;
 }
