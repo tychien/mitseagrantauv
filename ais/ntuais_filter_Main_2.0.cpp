@@ -60,11 +60,27 @@ int main(int argc, char **argv)
     }
 /******************************************************************************/ 
     int j =1;
+
     for(vector<struct Ship>::const_iterator i = ntuais_filter.ship_array.begin(); i!=ntuais_filter.ship_array.end(); i++){
         Ship ship = *i;
-        cout << ship.ship_length<< endl;
+        bool same_ship = false; 
+        for(vector<string>::const_iterator k = ntuais_filter.mmsi_list.begin(); k!=ntuais_filter.mmsi_list.end(); k++){
+            if(ship.mmsi == *k)
+               same_ship = true;
+        }
+        if(!same_ship)
+            ntuais_filter.mmsi_list.push_back(ship.mmsi);
+        
+        cout << ship.recordtime<< endl;
         j++;
     }
+
+    for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++)
+        cout << *l << endl;
+
+    
+
     cout << j << endl;
+    cout << ntuais_filter.TimeCalculate("2019-03-05 22:23:23.123456789","2019-03-05 22:24:25.123456789") << endl;
     return 0;
 }

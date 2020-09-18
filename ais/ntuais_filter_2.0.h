@@ -42,9 +42,11 @@ class NTUAIS_filter
 
         double  toRad(double degree);
         double  CalculateDistance(double lat1, double long1, double lat2, double long2);
-        
-        
+        //double  TimeCalculate(string t0, string t1); 
+        int     TimeCalculate(string t0, string t1);
+
         vector<struct Ship> ship_array;
+        vector<string> mmsi_list;
         struct Ship BuildShip(string s);
         
         double ReturnStationLat(){return station_Latitude;};

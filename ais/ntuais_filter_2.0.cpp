@@ -141,3 +141,32 @@ double NTUAIS_filter::CalculateDistance(double lat1, double long1, double lat2, 
     return dist;
 
 }
+
+
+//---------------------------------------------------------------
+// TimeCalculate
+int NTUAIS_filter::TimeCalculate(string t0, string t1)
+{
+    int time;
+    //example t0 = 2019-03-05 08:17:03.953000000, t1 = 2019-03-05 09:17:02.243000000000
+    string t0_HH, t0_MM, t0_SS;
+    string t1_HH, t1_MM, t1_SS;
+    size_t pos_t0;
+    size_t pos_t1;
+    if((pos_t0 = t0.find(" ")) != string::npos){
+        t0_HH = t0.substr(pos_t0+1, 2);
+        t0_MM = t0.substr(pos_t0+4, 2);
+        t0_SS = t0.substr(pos_t0+7, 2);
+    }
+    if((pos_t1 = t1.find(" ")) != string::npos){
+        t1_HH = t1.substr(pos_t1+1, 2);
+        t1_MM = t1.substr(pos_t1+4, 2);
+        t1_SS = t1.substr(pos_t1+7, 2);  
+    }
+    int t0_secs = stoi(t0_HH)*3600+stoi(t0_MM)*60+stoi(t0_SS);
+    int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);  
+    int delta = t1_secs - t0_secs;
+
+    time = delta;
+    return time;
+}
