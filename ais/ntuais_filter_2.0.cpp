@@ -69,9 +69,15 @@ string NTUAIS_filter::ReturnRange()
 //-------------------------------------------------------------
 // ReadFile
 
-void NTUAIS_filter::ReadFile()
+void NTUAIS_filter::ReadFile(string csvfile)
 {
-
+    fstream file;
+    file.open(csvfile);
+    string line;
+    while(getline(file,line)){
+        bool same_ship = false;
+        cout << line << endl;
+    } 
 }
 
 
