@@ -24,6 +24,12 @@ NTUAIS_filter::NTUAIS_filter()
     m_search_range="";
     station_Latitude = 24.000825;
     station_Longitude= 120.263155;
+    lat_now = 0;
+    lon_now = 0;
+    lat_previous = 0;
+    lon_previous = 0;
+    time_now = "";
+    time_previous = "";
 }
 
 //------------------------------------------------------------
@@ -145,9 +151,9 @@ double NTUAIS_filter::CalculateDistance(double lat1, double long1, double lat2, 
 
 //---------------------------------------------------------------
 // TimeCalculate
-int NTUAIS_filter::TimeCalculate(string t0, string t1)
+double NTUAIS_filter::TimeCalculate(string t0, string t1)
 {
-    int time;
+    double time;
     //example t0 = 2019-03-05 08:17:03.953000000, t1 = 2019-03-05 09:17:02.243000000000
     string t0_HH, t0_MM, t0_SS;
     string t1_HH, t1_MM, t1_SS;
@@ -167,6 +173,44 @@ int NTUAIS_filter::TimeCalculate(string t0, string t1)
     int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);  
     int delta = t1_secs - t0_secs;
 
-    time = delta;
+    time = double(delta);
+    
     return time;
+}
+
+//-------------------------------------------------------------------
+// Calculate Ave Speed
+
+double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
+{
+    double avgspeed;
+    bool initial = true;
+    bool timeinitial = true;
+    double distcal = 0;
+    double timecal = 0;
+    for(vector<struct Ship>::const_iterator i=ship.begin(); i!=ship.end(); i++){
+        lon_now = stod(i->lon);
+        lat_now = stod(i->lat);
+        time_now= i->recordtime;
+        if(initial == true){
+            lon_previous = lon_now;
+            lat_previous = lat_now;
+            initial = false;
+        }
+       
+        if(timeinitial == true){
+            time_previous = time_now; 
+            timeinitial = false;
+        } 
+        distcal +=  CalculateDistance(lat_now, lon_now, lat_previous, lon_previous);
+        timecal +=  TimeCalculate(time_previous,time_now); 
+    
+        lon_previous = lon_now;
+        lat_previous = lat_now;
+        time_previous= time_now;
+    }
+    
+    avgspeed = distcal/timecal;
+
+    return avgspeed;
 }

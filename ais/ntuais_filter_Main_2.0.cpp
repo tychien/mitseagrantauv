@@ -10,6 +10,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <list>
 #include "ntuais_filter_2.0.h"
 
 using namespace std;
@@ -39,7 +40,7 @@ int main(int argc, char **argv)
     string csvfile  = ntuais_filter.ReturnDate().substr(0,4)
                     + ntuais_filter.ReturnDate().substr(5,2)
                     + ".csv";
-
+        /*******************//*DATE*//***************************/
     vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages of that date
 /*******************************************************************************/
     //Chop the String and Build the Ships and store them into a list;
@@ -55,6 +56,8 @@ int main(int argc, char **argv)
         ships.ship_length   = ship_length;
         ships.ship_width    = ship_width;
         double distant = ntuais_filter.CalculateDistance(ntuais_filter.ReturnStationLat(),ntuais_filter.ReturnStationLon(), ship_lat, ship_lon);
+        
+        /******************//*RANGE*//*****************/
         if(distant< stod(ntuais_filter.ReturnRange())) 
             ntuais_filter.ship_array.push_back(ships); 
     }
@@ -74,9 +77,32 @@ int main(int argc, char **argv)
         cout << ship.recordtime<< endl;
         j++;
     }
+/********************************************************************************/
+    vector<struct Ship> ship_sameMMSI;//這裏要建object 
+    vector<vector<struct Ship> > ship_sameMMSIs; //分群的各MMSI們for the big circle under RANGE
+    for(vector<string>::const_iterator i= ntuais_filter.mmsi_list.begin(); i!=ntuais_filter.mmsi_list.end(); i++){
+        string shipi = *i;
+        for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); k!=ntuais_filter.ship_array.end(); k++){
+            if(shipi== k->mmsi)
+                ship_sameMMSI.push_back(*k); 
+        }
+        double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
+        cout << "AvgSpeed=" << avgspeed << endl;
+        //計算Avg.Speed 
+        ship_sameMMSIs.push_back(ship_sameMMSI);
+    
+    //calculateAvg.Speed
+    }
 
-    for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++)
+
+
+
+/***********************************************************************************/
+    for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++){
+        
         cout << *l << endl;
+        
+    }
 
     
 
