@@ -202,8 +202,8 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
             time_previous = time_now; 
             timeinitial = false;
         } 
-        distcal +=  CalculateDistance(lat_now, lon_now, lat_previous, lon_previous);
-        timecal +=  TimeCalculate(time_previous,time_now); 
+        distcal += fabs( CalculateDistance(lat_now, lon_now, lat_previous, lon_previous) );
+        timecal += fabs( TimeCalculate(time_previous,time_now)); 
     
         lon_previous = lon_now;
         lat_previous = lat_now;
