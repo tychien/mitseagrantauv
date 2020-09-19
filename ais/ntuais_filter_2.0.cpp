@@ -208,9 +208,9 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
         lon_previous = lon_now;
         lat_previous = lat_now;
         time_previous= time_now;
-    }
-    
+    } 
     avgspeed = distcal/timecal;
-
+    cout << distcal <<" "<<timecal << " "<< avgspeed << endl;
+    
     return avgspeed;
 }
