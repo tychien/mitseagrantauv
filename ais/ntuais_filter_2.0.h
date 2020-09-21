@@ -10,7 +10,8 @@
 
 using namespace std;
 
-struct Ship{
+struct Ship
+{
             string mmsi;
             string sog;
             string lon;
@@ -25,8 +26,7 @@ struct Ship{
             double ship_length;
             double ship_width;   
 
-    };
-
+};
 
 class NTUAIS_filter 
 {
@@ -52,9 +52,13 @@ class NTUAIS_filter
         vector<struct Ship> ship_sameMMSI;
         vector<vector<struct Ship> > ship_sameMMSIs;
         struct Ship BuildShip(string s);
-        
+        void BuildupMMSIList(vector<struct Ship> vector1, vector<string> vector2); 
+
+
         double ReturnStationLat(){return station_Latitude;};
         double ReturnStationLon(){return station_Longitude;};
+
+
     protected:
         
         string  m_search_date;
@@ -68,8 +72,6 @@ class NTUAIS_filter
         string  time_now;
         string  time_previous;
     private:
-
-
 };
 
 #endif

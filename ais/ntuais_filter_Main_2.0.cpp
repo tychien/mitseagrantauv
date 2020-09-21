@@ -1,8 +1,8 @@
-/*
- * Author: Tim TingYuan Chien
- * Version 2
- * In Version 2, the speed has been replaced by average speed in the searching range.
- */ 
+/*************************************************/
+/* Author: Tim TingYuan Chien                    */
+/* Version 2                                     */
+/* In Version 2, the speed has been replaced     */
+/*      by average speed in the searching range. */ 
 
 #include <iostream>
 #include <fstream>
@@ -63,6 +63,10 @@ int main(int argc, char **argv)
     }
 /******************************************************************************/ 
     int j =1;
+    
+    //ntuais_filter.BuildupMMSIList(ntuais_filter.ship_array, ntuais_filter.mmsi_list);
+    
+    
 
     for(vector<struct Ship>::const_iterator i = ntuais_filter.ship_array.begin(); i!=ntuais_filter.ship_array.end(); i++){
         Ship ship = *i;
@@ -77,24 +81,43 @@ int main(int argc, char **argv)
         cout << ship.recordtime<< endl;
         j++;
     }
+
+
+    
+
 /********************************************************************************/
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
     vector<vector<struct Ship> > ship_sameMMSIs; //分群的各MMSI們for the big circle under RANGE
     for(vector<string>::const_iterator i= ntuais_filter.mmsi_list.begin(); i!=ntuais_filter.mmsi_list.end(); i++){
         string shipi = *i;
+        cout << "-----------------------------------------------------------"<< endl;
+        cout << "shipi:" << shipi << endl;
         for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); k!=ntuais_filter.ship_array.end(); k++){
+            cout << "ship_array:" << k->mmsi << endl;
             if(shipi== k->mmsi)
                 ship_sameMMSI.push_back(*k); 
         }
+        
+        //計算平均速度
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
-        if(avgspeed==NAN){
-            for(vector<struct Ship>::const_iterator k= ntuais_filter.ship_sameMMSI.begin(); k!=ntuais_filter.ship_sameMMSI.end(); k++)
+        //檢查算出來的平均速度是否為NaN
+        cout << "avgspeed:" << isnan(avgspeed) << endl;
+        
+        if(isnan(avgspeed)){
+            cout << "shit"<< ntuais_filter.ship_sameMMSI.begin()->sog<< endl;
+            //avgspeed = stod(ntuais_filter.ship_sameMMSI.end()->sog);
+        /*    
+            for(vector<struct Ship>::const_iterator k= ntuais_filter.ship_sameMMSI.begin(); k!=ntuais_filter.ship_sameMMSI.end(); k++){
+                cout << "k->sog:"<< k->sog << endl;
                 avgspeed = stod(k->sog);
+            }
+        */
         }
         cout << "AvgSpeed=" << avgspeed << endl;
+        cout << "-----------------------------------------------------------"<< endl;
         //計算Avg.Speed 
         ship_sameMMSIs.push_back(ship_sameMMSI);
-    
+        ship_sameMMSI.clear(); 
     //calculateAvg.Speed
     }
 
@@ -103,14 +126,11 @@ int main(int argc, char **argv)
 
 /***********************************************************************************/
     for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++){
-        
         cout << *l << endl;
-        
     }
 
     
 
-    cout << j << endl;
-    cout << ntuais_filter.TimeCalculate("2019-03-05 22:23:23.123456789","2019-03-05 22:24:25.123456789") << endl;
+    //cout << j << endl;
     return 0;
 }
