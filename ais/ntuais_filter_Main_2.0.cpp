@@ -87,6 +87,10 @@ int main(int argc, char **argv)
                 ship_sameMMSI.push_back(*k); 
         }
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
+        if(avgspeed==NAN){
+            for(vector<struct Ship>::const_iterator k= ntuais_filter.ship_sameMMSI.begin(); k!=ntuais_filter.ship_sameMMSI.end(); k++)
+                avgspeed = stod(k->sog);
+        }
         cout << "AvgSpeed=" << avgspeed << endl;
         //計算Avg.Speed 
         ship_sameMMSIs.push_back(ship_sameMMSI);
