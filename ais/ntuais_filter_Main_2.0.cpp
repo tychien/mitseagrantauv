@@ -93,7 +93,7 @@ int main(int argc, char **argv)
         cout << "-----------------------------------------------------------"<< endl;
         cout << "shipi:" << shipi << endl;
         for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); k!=ntuais_filter.ship_array.end(); k++){
-            cout << "ship_array:" << k->mmsi << endl;
+        //    cout << "ship_array:" << k->mmsi << endl;
             if(shipi== k->mmsi)
                 ship_sameMMSI.push_back(*k); 
         }
@@ -104,14 +104,10 @@ int main(int argc, char **argv)
         cout << "avgspeed:" << isnan(avgspeed) << endl;
         
         if(isnan(avgspeed)){
-            cout << "shit"<< ntuais_filter.ship_sameMMSI.begin()->sog<< endl;
-            //avgspeed = stod(ntuais_filter.ship_sameMMSI.end()->sog);
-        /*    
-            for(vector<struct Ship>::const_iterator k= ntuais_filter.ship_sameMMSI.begin(); k!=ntuais_filter.ship_sameMMSI.end(); k++){
-                cout << "k->sog:"<< k->sog << endl;
-                avgspeed = stod(k->sog);
-            }
-        */
+            vector<struct Ship>::const_iterator a=ship_sameMMSI.end();
+            Ship ship = *a;
+            //cout << a->sog << endl;
+            avgspeed = stod(a->sog);
         }
         cout << "AvgSpeed=" << avgspeed << endl;
         cout << "-----------------------------------------------------------"<< endl;
