@@ -239,7 +239,7 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
     }
      
     avgspeed = distcal/timecal;
-    cout << distcal <<" "<<timecal << " "<< avgspeed << endl;
+    cout << distcal<< " km," <<" "<<timecal <<" seconds," <<" "<< avgspeed * 3600<<" km/hr."<< endl;
     
     return avgspeed;
 }
