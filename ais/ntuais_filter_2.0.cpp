@@ -84,10 +84,13 @@ vector<string> NTUAIS_filter::ReadFile(string csvfile)
     while(getline(file,line)){
         bool same_ship = false;
         size_t pos;
-        if((pos =line.find(ReturnDate())) != string::npos)
-            //cout << line << endl;
-            ship_list.push_back(line); 
-            //cout << "hey" << endl;
+        string recordtime = GetString(line,25);
+        string date = recordtime.substr(0,10);
+        cout << "date=" << date << endl;
+        if(date==ReturnDate())
+            ship_list.push_back(line);
+        //if((pos =line.find(ReturnDate())) != string::npos)
+        //    ship_list.push_back(line); 
     }
     return ship_list;
 }
@@ -121,7 +124,9 @@ struct Ship NTUAIS_filter::BuildShip(string s)
     ship.ref_pB = this->GetString(s,16);
     ship.ref_pC = this->GetString(s,17);
     ship.ref_pD = this->GetString(s,18);
-    ship.recordtime = this->GetString(s,25); 
+    ship.recordtime = this->GetString(s,25);
+    if(ship.recordtime =="-1")
+       ship.recordtime = this->GetString(s,26); 
     return ship;
 };
 
@@ -163,7 +168,7 @@ double NTUAIS_filter::CalculateDistance(double lat1, double long1, double lat2, 
             cos(this->toRad(lat1)) * cos(this->toRad(lat2)) * cos(this->toRad(long1 - long2));
     dist = acos(dist);
     dist = 6371 * dist;
-    return dist;
+    return fabs(dist);
 
 }
 
@@ -225,12 +230,14 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
             timeinitial = false;
         } 
         distcal += fabs( CalculateDistance(lat_now, lon_now, lat_previous, lon_previous) );
+        cout << "distcal+=" << distcal << endl;
         timecal += fabs( TimeCalculate(time_previous,time_now)); 
         
         lon_previous = lon_now;
         lat_previous = lat_now;
         time_previous= time_now;
-    } 
+    }
+     
     avgspeed = distcal/timecal;
     cout << distcal <<" "<<timecal << " "<< avgspeed << endl;
     

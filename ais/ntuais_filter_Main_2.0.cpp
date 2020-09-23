@@ -62,12 +62,7 @@ int main(int argc, char **argv)
             ntuais_filter.ship_array.push_back(ships); 
     }
 /******************************************************************************/ 
-    int j =1;
     
-    //ntuais_filter.BuildupMMSIList(ntuais_filter.ship_array, ntuais_filter.mmsi_list);
-    
-    
-
     for(vector<struct Ship>::const_iterator i = ntuais_filter.ship_array.begin(); i!=ntuais_filter.ship_array.end(); i++){
         Ship ship = *i;
         bool same_ship = false; 
@@ -79,11 +74,8 @@ int main(int argc, char **argv)
             ntuais_filter.mmsi_list.push_back(ship.mmsi);
         
         cout << ship.recordtime<< endl;
-        j++;
     }
 
-
-    
 
 /********************************************************************************/
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
@@ -93,7 +85,6 @@ int main(int argc, char **argv)
         cout << "-----------------------------------------------------------"<< endl;
         cout << "shipi:" << shipi << endl;
         for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); k!=ntuais_filter.ship_array.end(); k++){
-        //    cout << "ship_array:" << k->mmsi << endl;
             if(shipi== k->mmsi)
                 ship_sameMMSI.push_back(*k); 
         }
@@ -101,32 +92,20 @@ int main(int argc, char **argv)
         //計算平均速度
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
         //檢查算出來的平均速度是否為NaN
-        cout << "avgspeed:" << isnan(avgspeed) << endl;
-        
         if(isnan(avgspeed)){
             vector<struct Ship>::const_iterator a=ship_sameMMSI.end();
             Ship ship = *a;
-            //cout << a->sog << endl;
             avgspeed = stod(a->sog);
         }
         cout << "AvgSpeed=" << avgspeed << endl;
         cout << "-----------------------------------------------------------"<< endl;
-        //計算Avg.Speed 
         ship_sameMMSIs.push_back(ship_sameMMSI);
         ship_sameMMSI.clear(); 
-    //calculateAvg.Speed
     }
-
-
-
 
 /***********************************************************************************/
     for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++){
         cout << *l << endl;
     }
-
-    
-
-    //cout << j << endl;
     return 0;
 }
