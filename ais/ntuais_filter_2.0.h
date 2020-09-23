@@ -73,5 +73,4 @@ class NTUAIS_filter
         string  time_previous;
     private:
 };
-
 #endif

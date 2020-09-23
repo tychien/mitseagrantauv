@@ -93,9 +93,11 @@ int main(int argc, char **argv)
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
         //檢查算出來的平均速度是否為NaN
         if(isnan(avgspeed)){
-            vector<struct Ship>::const_iterator a=ship_sameMMSI.end();
+            cout <<"Single AIS Msg"<< endl;
+            vector<struct Ship>::const_iterator a=ship_sameMMSI.begin();
             Ship ship = *a;
             avgspeed = stod(a->sog);
+            cout << avgspeed << endl;
         }
         cout << "AvgSpeed=" << avgspeed << endl;
         cout << "-----------------------------------------------------------"<< endl;
