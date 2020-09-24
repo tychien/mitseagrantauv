@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     string csvfile  = ntuais_filter.ReturnDate().substr(0,4)
                     + ntuais_filter.ReturnDate().substr(5,2)
                     + ".csv";
-        /*******************//*DATE*//***************************/
+        /*******************//*DATE*//******從時間篩資料************/
     vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages of that date
 /*******************************************************************************/
     //Chop the String and Build the Ships and store them into a list;
@@ -57,11 +57,11 @@ int main(int argc, char **argv)
         ships.ship_width    = ship_width;
         double distant = ntuais_filter.CalculateDistance(ntuais_filter.ReturnStationLat(),ntuais_filter.ReturnStationLon(), ship_lat, ship_lon);
         
-        /******************//*RANGE*//*****************/
+        /******************//*RANGE*//******從範圍篩資料**存到ship_array*********/
         if(distant< stod(ntuais_filter.ReturnRange())) 
             ntuais_filter.ship_array.push_back(ships); 
     }
-/******************************************************************************/ 
+/*******從ship_array找相同mmsi的msg存成string到mmsi_list中***********************/ 
     
     for(vector<struct Ship>::const_iterator i = ntuais_filter.ship_array.begin(); i!=ntuais_filter.ship_array.end(); i++){
         Ship ship = *i;
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
     }
 
 
-/********************************************************************************/
+/****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
     vector<vector<struct Ship> > ship_sameMMSIs; //分群的各MMSI們for the big circle under RANGE
     for(vector<string>::const_iterator i= ntuais_filter.mmsi_list.begin(); i!=ntuais_filter.mmsi_list.end(); i++){
@@ -88,7 +88,34 @@ int main(int argc, char **argv)
             if(shipi== k->mmsi)
                 ship_sameMMSI.push_back(*k); 
         }
-        
+        /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
+        bool has_previous_time = false;
+        cout << "has_previous_time:"<<has_previous_time << endl;
+        int previous_time = 0;
+        for(vector<struct Ship>::const_iterator j=ntuais_filter.ship_sameMMSI.begin(); j!=ntuais_filter.ship_sameMMSI.end(); j++){
+            string now_readcordtime = j->recordtime;
+            double time; 
+            string t1_HH, t1_MM, t1_SS;
+            size_t pos_t1;
+            if((pos_t1 = now_readcordtime.find("  ")) != string::npos){
+                t1_HH = now_readcordtime.substr(pos_t1+1, 2);
+                t1_MM = now_readcordtime.substr(pos_t1+4, 2);
+                t1_SS = now_readcordtime.substr(pos_t1+7, 2);
+            }
+            int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);
+            if(has_previous_time==false){
+                previous_time = t1_secs;
+                has_previous_time = true;
+            } 
+            if((has_previous_time==true)&& previous_time > t1_secs){
+                ntuais_filter.ship_sameMMSI.erase(j);
+                cout << "erase()" << endl;
+            }
+            previous_time = t1_secs;
+        }
+
+        /***************************************************************************/
+
         //計算平均速度
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
         //檢查算出來的平均速度是否為NaN
@@ -99,7 +126,7 @@ int main(int argc, char **argv)
             avgspeed = stod(a->sog);
             cout << avgspeed << endl;
         }
-        cout << "AvgSpeed=" << avgspeed << endl;
+        cout << "AvgSpeed=" << avgspeed <<" knots "<< endl;
         cout << "-----------------------------------------------------------"<< endl;
         ship_sameMMSIs.push_back(ship_sameMMSI);
         ship_sameMMSI.clear(); 

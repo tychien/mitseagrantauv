@@ -83,14 +83,11 @@ vector<string> NTUAIS_filter::ReadFile(string csvfile)
     string line;
     while(getline(file,line)){
         bool same_ship = false;
-        size_t pos;
         string recordtime = GetString(line,25);
         string date = recordtime.substr(0,10);
         cout << "date=" << date << endl;
         if(date==ReturnDate())
             ship_list.push_back(line);
-        //if((pos =line.find(ReturnDate())) != string::npos)
-        //    ship_list.push_back(line); 
     }
     return ship_list;
 }
@@ -239,7 +236,8 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
     }
      
     avgspeed = distcal/timecal;
-    cout << distcal<< " km," <<" "<<timecal <<" seconds," <<" "<< avgspeed * 3600<<" km/hr."<< endl;
+    avgspeed = avgspeed * 3600 / 1.852;
+    cout << distcal<< " km," <<" "<<timecal <<" seconds," <<" "<< avgspeed <<" knots."<< endl;
     
     return avgspeed;
 }
