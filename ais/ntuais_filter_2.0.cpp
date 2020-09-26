@@ -175,23 +175,9 @@ double NTUAIS_filter::CalculateDistance(double lat1, double long1, double lat2, 
 double NTUAIS_filter::TimeCalculate(string t0, string t1)
 {
     double time;
-    //example t0 = 2019-03-05 08:17:03.953000000, t1 = 2019-03-05 09:17:02.243000000000
-    string t0_HH, t0_MM, t0_SS;
-    string t1_HH, t1_MM, t1_SS;
-    size_t pos_t0;
-    size_t pos_t1;
-    if((pos_t0 = t0.find(" ")) != string::npos){
-        t0_HH = t0.substr(pos_t0+1, 2);
-        t0_MM = t0.substr(pos_t0+4, 2);
-        t0_SS = t0.substr(pos_t0+7, 2);
-    }
-    if((pos_t1 = t1.find(" ")) != string::npos){
-        t1_HH = t1.substr(pos_t1+1, 2);
-        t1_MM = t1.substr(pos_t1+4, 2);
-        t1_SS = t1.substr(pos_t1+7, 2);  
-    }
-    int t0_secs = stoi(t0_HH)*3600+stoi(t0_MM)*60+stoi(t0_SS);
-    int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);  
+    int t0_secs = this->ConvertTimeToSeconds(t0);
+    int t1_secs = this->ConvertTimeToSeconds(t1);
+    
     int delta = t1_secs - t0_secs;
 
     time = double(delta);
@@ -240,4 +226,47 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
     cout << distcal<< " km," <<" "<<timecal <<" seconds," <<" "<< avgspeed <<" knots."<< endl;
     
     return avgspeed;
+}
+
+//-----------------------------------------------------------------------
+// ConvertTimeToSeconds
+
+int NTUAIS_filter::ConvertTimeToSeconds(string time)
+{
+    string t1_HH, t1_MM, t1_SS;
+    size_t pos_t1;
+    if((pos_t1 = time.find(" "))!= string::npos){
+        t1_HH = time.substr(pos_t1+1, 2);
+        t1_MM = time.substr(pos_t1+4, 2);
+        t1_SS = time.substr(pos_t1+7, 2);
+    }
+    int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);
+    return t1_secs;
+}
+
+//------------------------------------------------------------------------
+// CleanUpOverlapTime
+void NTUAIS_filter::CleanUpOverlapTime(vector<struct Ship> ship)
+{
+    
+    bool has_previous_time = false;
+    cout <<"has_previous_time:" << has_previous_time << endl;
+    int previous_time = 0;
+    for(vector<struct Ship>::const_iterator j=ship.begin(); j!=ship.end(); j++){
+        cout <<"hi," << j->mmsi<< endl;
+        string now_recoredtime = j->recordtime;
+        
+        int t1_secs = this->ConvertTimeToSeconds(now_recoredtime);
+        cout <<"previous_time:" << previous_time << "t1_secs:"<< t1_secs << endl;
+        while(has_previous_time == false){
+            previous_time = t1_secs;
+            has_previous_time =true;
+            cout << "while loop" << endl;
+        }
+        if((has_previous_time == true )&& previous_time > t1_secs){
+            ship.erase(j);
+            cout << "erase()" << endl;
+        }
+    }
+
 }

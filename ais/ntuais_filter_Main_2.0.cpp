@@ -84,36 +84,14 @@ int main(int argc, char **argv)
         string shipi = *i;
         cout << "-----------------------------------------------------------"<< endl;
         cout << "shipi:" << shipi << endl;
-        for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); k!=ntuais_filter.ship_array.end(); k++){
+        for(vector<struct Ship>::const_iterator k = ntuais_filter.ship_array.begin(); 
+                k!=ntuais_filter.ship_array.end(); k++){
             if(shipi== k->mmsi)
                 ship_sameMMSI.push_back(*k); 
+                cout << "push_back_sameMMSI"<<" " << shipi << endl;
         }
         /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
-        bool has_previous_time = false;
-        cout << "has_previous_time:"<<has_previous_time << endl;
-        int previous_time = 0;
-        for(vector<struct Ship>::const_iterator j=ntuais_filter.ship_sameMMSI.begin(); j!=ntuais_filter.ship_sameMMSI.end(); j++){
-            string now_readcordtime = j->recordtime;
-            double time; 
-            string t1_HH, t1_MM, t1_SS;
-            size_t pos_t1;
-            if((pos_t1 = now_readcordtime.find("  ")) != string::npos){
-                t1_HH = now_readcordtime.substr(pos_t1+1, 2);
-                t1_MM = now_readcordtime.substr(pos_t1+4, 2);
-                t1_SS = now_readcordtime.substr(pos_t1+7, 2);
-            }
-            int t1_secs = stoi(t1_HH)*3600+stoi(t1_MM)*60+stoi(t1_SS);
-            if(has_previous_time==false){
-                previous_time = t1_secs;
-                has_previous_time = true;
-            } 
-            if((has_previous_time==true)&& previous_time > t1_secs){
-                ntuais_filter.ship_sameMMSI.erase(j);
-                cout << "erase()" << endl;
-            }
-            previous_time = t1_secs;
-        }
-
+        ntuais_filter.CleanUpOverlapTime(ntuais_filter.ship_sameMMSI);
         /***************************************************************************/
 
         //計算平均速度
