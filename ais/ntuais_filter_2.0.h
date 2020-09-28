@@ -48,7 +48,7 @@ class NTUAIS_filter
         double  AvgSpeedCalculate(vector<struct Ship> ship);
         int     ConvertTimeToSeconds(string time);
         void    CleanUpOverlapTime(vector<struct Ship> ship);
-
+        void    ShowSTL(vector<struct Ship> ship);
 
         vector<struct Ship> ship_array;
         vector<string> mmsi_list;
