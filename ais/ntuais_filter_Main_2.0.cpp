@@ -10,7 +10,6 @@
 #include <string>
 #include <cmath>
 #include <vector>
-#include <list>
 #include "ntuais_filter_2.0.h"
 
 using namespace std;
@@ -88,13 +87,13 @@ int main(int argc, char **argv)
                 k!=ntuais_filter.ship_array.end(); k++){
             if(shipi== k->mmsi){
                 ship_sameMMSI.push_back(*k); 
-                cout << "push_back_sameMMSI"<<" " << shipi << endl;
+            //    cout << "push_back_sameMMSI"<<" " << shipi << endl;
             }
         }
         /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
         ntuais_filter.CleanUpOverlapTime(ship_sameMMSI);
-        ntuais_filter.ShowSTL(ship_sameMMSI);
-        cout << "here "<<ship_sameMMSI.size() << endl;
+        //ntuais_filter.ShowSTL(ship_sameMMSI);
+        //cout << "here "<<ship_sameMMSI.size() << endl;
         /***************************************************************************/
 
         //計算平均速度
