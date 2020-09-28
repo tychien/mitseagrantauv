@@ -250,24 +250,22 @@ void NTUAIS_filter::CleanUpOverlapTime(vector<struct Ship> ship)
 {
     
     bool has_previous_time = false;
-    //cout <<"has_previous_time:" << has_previous_time << endl;
     int previous_time = 0;
-    vector<struct Ship>::const_iterator j;
-    for(j=ship.begin(); j!=ship.end();){
-    //    cout <<"hi," << j->recordtime<< endl;
+    for(vector<struct Ship>::const_iterator j=ship.begin(); j!=ship.end();){
+        cout << &j << endl;
+        cout << j->recordtime<< endl;
         string now_recoredtime = j->recordtime;
         int t1_secs = this->ConvertTimeToSeconds(now_recoredtime);
-    //    cout <<"previous_time:" << previous_time << " ,t1_secs:"<< t1_secs << endl;
+        cout <<"previous_time:" << previous_time << " ,t1_secs:"<< t1_secs << endl;
         while(has_previous_time == false){
             previous_time = t1_secs;
             has_previous_time =true;
-    //        cout <<"-----------------------" <<"\n" <<"while loop" << endl;
         }
         
         if((has_previous_time == true )&& (previous_time > t1_secs)){
-            cout <<"before erase"<< endl;
             j=ship.erase(j);
-            cout << "erase("<<t1_secs<<")"<< endl;
+            cout << &j << endl;
+            cout << "erase("<<&j<<")"<< endl;
         }
         
         else
@@ -275,7 +273,7 @@ void NTUAIS_filter::CleanUpOverlapTime(vector<struct Ship> ship)
     }
     ShowSTL(ship);
 
-    cout << endl;
+    cout <<ship.size()<< endl;
 }
 //-------------------------------------------------------------------------------
 // ShowSTL

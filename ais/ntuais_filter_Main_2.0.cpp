@@ -71,7 +71,6 @@ int main(int argc, char **argv)
         }
         if(!same_ship)
             ntuais_filter.mmsi_list.push_back(ship.mmsi);
-        
         cout << ship.recordtime<< endl;
     }
 
@@ -91,9 +90,33 @@ int main(int argc, char **argv)
             }
         }
         /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
-        ntuais_filter.CleanUpOverlapTime(ship_sameMMSI);
-        //ntuais_filter.ShowSTL(ship_sameMMSI);
-        //cout << "here "<<ship_sameMMSI.size() << endl;
+        //ntuais_filter.CleanUpOverlapTime(ship_sameMMSI);
+        cout << "here "<<ship_sameMMSI.size() << endl;
+        bool has_previous_time = false;
+        int previous_time = 0;
+        for(vector<struct Ship>::const_iterator j = ship_sameMMSI.begin(); j!=ship_sameMMSI.end();){
+            cout << &j << endl;
+            cout << j->recordtime << endl;
+            string now_recoredtime = j->recordtime;
+            int t1_secs = ntuais_filter.ConvertTimeToSeconds(now_recoredtime);
+            cout <<"previous_time:" << previous_time << " ,t1_secs:"<< t1_secs << endl;
+            while(has_previous_time == false){
+                previous_time = t1_secs;
+                has_previous_time =true;
+            }
+
+            if((has_previous_time == true )&& (previous_time > t1_secs)){
+                j=ship_sameMMSI.erase(j);
+                cout << &j << endl;
+                cout << "erase("<<&j<<")"<< endl;
+            }
+
+            else
+                j++; 
+        }
+        ntuais_filter.ShowSTL(ship_sameMMSI); 
+        cout << ship_sameMMSI.size() << endl; 
+       
         /***************************************************************************/
 
         //計算平均速度
