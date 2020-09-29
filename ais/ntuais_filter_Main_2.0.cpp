@@ -49,7 +49,7 @@ int main(int argc, char **argv)
         struct Ship ships   = ntuais_filter.BuildShip(*i);
         double ship_length  = stod(ships.ref_pA)+stod(ships.ref_pB);
         double ship_width   = stod(ships.ref_pC)+stod(ships.ref_pD);
-        
+        cout << ship_length << endl; 
         double ship_lat     = stod(ships.lat);
         double ship_lon     = stod(ships.lon);
         
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
         if(!same_ship)
             ntuais_filter.mmsi_list.push_back(ship.mmsi);
         cout << ship.recordtime<< endl;
-        cout << "ship_length:"<<ship.ship_length << endl;
+        cout << "ship_mmsi:"<<ship.lat << endl;
     }
 
 /****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
@@ -132,10 +132,48 @@ int main(int argc, char **argv)
         
         ship_sameMMSIs.push_back(ship_sameMMSI);
 /******************************輸出到CSV********************************************/ 
-        string file_mmsi = ship_sameMMSI.begin()->mmsi;
+        vector<struct Ship>::const_iterator z = ship_sameMMSI.begin();
+        string file_mmsi = z->mmsi;
         cout << "file_mmsi:"<<file_mmsi << endl;
-        string file_length = to_string(ship_sameMMSI.begin()->ship_length);
-        cout << "file_length:"<<endl;
+        string file_length = to_string(z->ship_length);
+        cout << "file_length:"<<file_length<<endl;
+        string file_width = to_string(ship_sameMMSI.begin()->ship_width);
+        cout << "file_width:" << file_width<< endl;
+        string file_avgspeed = to_string(avgspeed);
+        cout << "file_avgspeed:"<<file_avgspeed<< endl;
+        string file_type = ship_sameMMSI.begin()->ship_type;
+        cout << "file_type:" << file_type << endl;
+        cout << ship_sameMMSI.size() << endl;
+        if(ship_sameMMSI.size()==1){
+            string file_enterLAT = ship_sameMMSI.begin()->lat;
+            cout << "file_entLAT:" << file_enterLAT << endl;
+            string file_enterLON = ship_sameMMSI.begin()->lon;
+            cout << "file_entLON:" << file_enterLON << endl;
+            string file_enterTIME = z->recordtime;
+            cout << "file_enterTIME:" << file_enterTIME << endl;
+        }
+        else if(ship_sameMMSI.size()>1){
+            string file_enterLAT = ship_sameMMSI.begin()->lat;
+            cout << "file_entLAT:" << file_enterLAT << endl;
+            string file_enterLON = ship_sameMMSI.begin()->lon;
+            cout << "file_entLON:" << file_enterLON << endl;
+            string file_leaLAT = (z+(ship_sameMMSI.size()-1))->lat;
+            cout << "file_leaLAT:" << file_leaLAT << endl;
+            string file_leaLON = (z+ship_sameMMSI.size()-1)->lon;
+            cout << "file_leaLON:" << file_leaLON << endl;
+            string file_enterTIME = z->recordtime;
+            cout << "file_entTIME:" << file_enterTIME << endl;
+            string file_leaTIME = (z+ship_sameMMSI.size()-1)->recordtime;
+            cout << "file_leaTIME:" << file_leaTIME << endl;
+            string file_bound;
+            if(stod(file_enterLAT)-stod(file_leaLAT)>0)
+                file_bound = "South";
+            if(stod(file_enterLAT)-stod(file_leaLAT)<0)
+                file_bound = "North";
+            if(stod(file_enterLAT)-stod(file_leaLAT)==0) 
+                file_bound = "East-West";
+            cout << file_bound << endl; 
+        }
 /***********************************************************************************/
         ship_sameMMSI.clear(); 
     }
@@ -143,7 +181,7 @@ int main(int argc, char **argv)
 
 
 /***********************************************************************************/
-
+    cout << "----------------------------------------------------------"<<endl;
     ntuais_filter.ShowStrSTL(ntuais_filter.mmsi_list);
     return 0;
 }

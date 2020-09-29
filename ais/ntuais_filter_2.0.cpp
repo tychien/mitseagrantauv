@@ -122,9 +122,9 @@ struct Ship NTUAIS_filter::BuildShip(string s)
     ship.ref_pC = this->GetString(s,17);
     ship.ref_pD = this->GetString(s,18);
     ship.recordtime = this->GetString(s,25);
-    ship.ship_length;
-    ship.ship_width;
-    ship.avgspeed;
+//    ship.ship_length;
+//    ship.ship_width;
+//    ship.avgspeed;
     if(ship.recordtime =="-1")
        ship.recordtime = this->GetString(s,26); 
     return ship;

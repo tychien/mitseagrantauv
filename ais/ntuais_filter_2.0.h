@@ -29,6 +29,25 @@ struct Ship
 
 };
 
+struct ShipOutPut
+{
+    string  mmsi;
+    string  avgspeed; 
+    string  ship_length;
+    string  ship_width;
+    string  ship_type;
+    string  avgRange;
+    string  entering_LAT;
+    string  entering_LON;
+    string  leaving_LAT;
+    string  leaving_LON;
+    string  entering_TIME;
+    string  leaving_TIME;
+    string  boundDIR; 
+};
+
+
+
 class NTUAIS_filter 
 {
     public:
@@ -56,6 +75,7 @@ class NTUAIS_filter
         vector<string> mmsi_list;
         vector<struct Ship> ship_sameMMSI;
         vector<vector<struct Ship> > ship_sameMMSIs;
+        vector<string> vShipOutPut;
         struct Ship BuildShip(string s);
         void BuildupMMSIList(vector<struct Ship> vector1, vector<string> vector2); 
 
