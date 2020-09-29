@@ -122,6 +122,9 @@ struct Ship NTUAIS_filter::BuildShip(string s)
     ship.ref_pC = this->GetString(s,17);
     ship.ref_pD = this->GetString(s,18);
     ship.recordtime = this->GetString(s,25);
+    ship.ship_length;
+    ship.ship_width;
+    ship.avgspeed;
     if(ship.recordtime =="-1")
        ship.recordtime = this->GetString(s,26); 
     return ship;
@@ -281,4 +284,12 @@ void NTUAIS_filter::ShowSTL(vector<struct Ship> ship)
 {
     for(vector<struct Ship>::const_iterator i=ship.begin(); i!=ship.end(); i++)
         cout << i->recordtime << endl;
+}
+
+//-------------------------------------------------------------------------------
+// ShowStrSTL
+void NTUAIS_filter::ShowStrSTL(vector<string> ship)
+{
+    for(vector<string>::const_iterator i=ship.begin(); i!=ship.end(); i++)
+        cout << *i << endl;
 }

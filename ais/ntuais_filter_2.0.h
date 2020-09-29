@@ -24,7 +24,8 @@ struct Ship
             string ref_pD;
             string recordtime;
             double ship_length;
-            double ship_width;   
+            double ship_width;  
+            double avgspeed; 
 
 };
 
@@ -49,6 +50,7 @@ class NTUAIS_filter
         int     ConvertTimeToSeconds(string time);
         void    CleanUpOverlapTime(vector<struct Ship> ship);
         void    ShowSTL(vector<struct Ship> ship);
+        void    ShowStrSTL(vector<string> ship);
 
         vector<struct Ship> ship_array;
         vector<string> mmsi_list;
@@ -57,10 +59,8 @@ class NTUAIS_filter
         struct Ship BuildShip(string s);
         void BuildupMMSIList(vector<struct Ship> vector1, vector<string> vector2); 
 
-
         double ReturnStationLat(){return station_Latitude;};
         double ReturnStationLon(){return station_Longitude;};
-
 
     protected:
         

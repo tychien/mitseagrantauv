@@ -1,8 +1,9 @@
-/*************************************************/
-/* Author: Tim TingYuan Chien                    */
-/* Version 2                                     */
-/* In Version 2, the speed has been replaced     */
-/*      by average speed in the searching range. */ 
+/************************************************************/
+/* Author: Tim TingYuan Chien 前定遠r07525118@ntu.edu.tw    */
+/* Version 2                                                */
+/* In Version 2, the speed has been replaced                */
+/*      by average speed.                                   */ 
+/************************************************************/
 
 #include <iostream>
 #include <fstream>
@@ -72,8 +73,8 @@ int main(int argc, char **argv)
         if(!same_ship)
             ntuais_filter.mmsi_list.push_back(ship.mmsi);
         cout << ship.recordtime<< endl;
+        cout << "ship_length:"<<ship.ship_length << endl;
     }
-
 
 /****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
@@ -91,11 +92,11 @@ int main(int argc, char **argv)
         }
         /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
         //ntuais_filter.CleanUpOverlapTime(ship_sameMMSI);
-        cout << "here "<<ship_sameMMSI.size() << endl;
+        cout << "We Have "<<ship_sameMMSI.size() <<" ship_sameMMSI msgs. " <<endl;
         bool has_previous_time = false;
         int previous_time = 0;
-        for(vector<struct Ship>::const_iterator j = ship_sameMMSI.begin(); j!=ship_sameMMSI.end();){
-            cout << &j << endl;
+        for(vector<struct Ship>::const_iterator j = ship_sameMMSI.begin(); 
+                j!=ship_sameMMSI.end();){
             cout << j->recordtime << endl;
             string now_recoredtime = j->recordtime;
             int t1_secs = ntuais_filter.ConvertTimeToSeconds(now_recoredtime);
@@ -107,18 +108,16 @@ int main(int argc, char **argv)
 
             if((has_previous_time == true )&& (previous_time > t1_secs)){
                 j=ship_sameMMSI.erase(j);
-                cout << &j << endl;
                 cout << "erase("<<&j<<")"<< endl;
             }
-
+            
             else
                 j++; 
         }
-        ntuais_filter.ShowSTL(ship_sameMMSI); 
-        cout << ship_sameMMSI.size() << endl; 
+        //ntuais_filter.ShowSTL(ship_sameMMSI); 
+        //cout << ship_sameMMSI.size() << endl; 
        
         /***************************************************************************/
-
         //計算平均速度
         double avgspeed = ntuais_filter.AvgSpeedCalculate(ship_sameMMSI);
         //檢查算出來的平均速度是否為NaN
@@ -127,17 +126,24 @@ int main(int argc, char **argv)
             vector<struct Ship>::const_iterator a=ship_sameMMSI.begin();
             Ship ship = *a;
             avgspeed = stod(a->sog);
-            cout << avgspeed << endl;
         }
         cout << "AvgSpeed=" << avgspeed <<" knots "<< endl;
         cout << "-----------------------------------------------------------"<< endl;
+        
         ship_sameMMSIs.push_back(ship_sameMMSI);
+/******************************輸出到CSV********************************************/ 
+        string file_mmsi = ship_sameMMSI.begin()->mmsi;
+        cout << "file_mmsi:"<<file_mmsi << endl;
+        string file_length = to_string(ship_sameMMSI.begin()->ship_length);
+        cout << "file_length:"<<endl;
+/***********************************************************************************/
         ship_sameMMSI.clear(); 
     }
 
+
+
 /***********************************************************************************/
-    for(vector<string>::const_iterator l = ntuais_filter.mmsi_list.begin(); l!=ntuais_filter.mmsi_list.end(); l++){
-        cout << *l << endl;
-    }
+
+    ntuais_filter.ShowStrSTL(ntuais_filter.mmsi_list);
     return 0;
 }
