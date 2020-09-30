@@ -77,6 +77,7 @@ int main(int argc, char **argv)
     }
 
 /****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
+    vector<string> file_ship_array;
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
     vector<vector<struct Ship> > ship_sameMMSIs; //分群的各MMSI們for the big circle under RANGE
     for(vector<string>::const_iterator i= ntuais_filter.mmsi_list.begin(); i!=ntuais_filter.mmsi_list.end(); i++){
@@ -144,28 +145,39 @@ int main(int argc, char **argv)
         string file_type = ship_sameMMSI.begin()->ship_type;
         cout << "file_type:" << file_type << endl;
         cout << ship_sameMMSI.size() << endl;
+        string file_enterLAT;
+        string file_enterLON;
+        string file_enterTIME;
+        string file_leaLAT;
+        string file_leaLON;
+        string file_leaTIME;
+        string file_bound; 
+        
         if(ship_sameMMSI.size()==1){
-            string file_enterLAT = ship_sameMMSI.begin()->lat;
+            file_enterLAT = ship_sameMMSI.begin()->lat;
             cout << "file_entLAT:" << file_enterLAT << endl;
-            string file_enterLON = ship_sameMMSI.begin()->lon;
+            file_enterLON = ship_sameMMSI.begin()->lon;
             cout << "file_entLON:" << file_enterLON << endl;
-            string file_enterTIME = z->recordtime;
+            file_enterTIME = z->recordtime;
             cout << "file_enterTIME:" << file_enterTIME << endl;
+            file_leaLAT = ship_sameMMSI.begin()->lat;
+            file_leaLON = ship_sameMMSI.begin()->lon;
+            file_leaTIME= z->recordtime;
+            file_bound  = "SingleAISMsg";
         }
         else if(ship_sameMMSI.size()>1){
-            string file_enterLAT = ship_sameMMSI.begin()->lat;
+            file_enterLAT = ship_sameMMSI.begin()->lat;
             cout << "file_entLAT:" << file_enterLAT << endl;
-            string file_enterLON = ship_sameMMSI.begin()->lon;
+            file_enterLON = ship_sameMMSI.begin()->lon;
             cout << "file_entLON:" << file_enterLON << endl;
-            string file_leaLAT = (z+(ship_sameMMSI.size()-1))->lat;
+            file_leaLAT = (z+(ship_sameMMSI.size()-1))->lat;
             cout << "file_leaLAT:" << file_leaLAT << endl;
-            string file_leaLON = (z+ship_sameMMSI.size()-1)->lon;
+            file_leaLON = (z+ship_sameMMSI.size()-1)->lon;
             cout << "file_leaLON:" << file_leaLON << endl;
-            string file_enterTIME = z->recordtime;
+            file_enterTIME = z->recordtime;
             cout << "file_entTIME:" << file_enterTIME << endl;
-            string file_leaTIME = (z+ship_sameMMSI.size()-1)->recordtime;
+            file_leaTIME = (z+ship_sameMMSI.size()-1)->recordtime;
             cout << "file_leaTIME:" << file_leaTIME << endl;
-            string file_bound;
             if(stod(file_enterLAT)-stod(file_leaLAT)>0)
                 file_bound = "South";
             if(stod(file_enterLAT)-stod(file_leaLAT)<0)
@@ -174,6 +186,19 @@ int main(int argc, char **argv)
                 file_bound = "East-West";
             cout << file_bound << endl; 
         }
+        file_ship_array.push_back(file_mmsi     +","
+                                +file_length    +","
+                                +file_width     +","   
+                                +file_avgspeed  +","
+                                +file_type      +","
+                                +file_enterLAT  +","
+                                +file_enterLON  +","
+                                +file_enterTIME +","
+                                +file_leaLAT    +","
+                                +file_leaLON    +","
+                                +file_leaTIME   +","
+                                +file_bound);
+
 /***********************************************************************************/
         ship_sameMMSI.clear(); 
     }
@@ -183,5 +208,13 @@ int main(int argc, char **argv)
 /***********************************************************************************/
     cout << "----------------------------------------------------------"<<endl;
     ntuais_filter.ShowStrSTL(ntuais_filter.mmsi_list);
+    string outputfilecsv = "";
+           outputfilecsv+= ntuais_filter.ReturnDate();
+           outputfilecsv+="_";
+           outputfilecsv+= ntuais_filter.ReturnRange();
+           outputfilecsv+="km.csv";
+    std::ofstream output_file(outputfilecsv);
+    for(const auto &e : file_ship_array) output_file << e << "\n";    
+
     return 0;
 }
