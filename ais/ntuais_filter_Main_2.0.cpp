@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 
 /****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
     vector<string> file_ship_array;
-    file_ship_array.push_back("mmsi,length,width,avgspeed,type,enterLAT,enterLON,enterTIME,leaveLAT,leaveLON,leaveTIME,BoundFor");
+    file_ship_array.push_back("mmsi,length,width,avgspeed,type,enterLAT,enterLON,enterTIME,leaveLAT,leaveLON,leaveTIME,BoundFor,shortest_dist,shortest_dist_time");
     vector<struct Ship> ship_sameMMSI;//這裏要建object 
     vector<vector<struct Ship> > ship_sameMMSIs; //分群的各MMSI們for the big circle under RANGE
     for(vector<string>::const_iterator i= ntuais_filter.mmsi_list.begin(); i!=ntuais_filter.mmsi_list.end(); i++){
@@ -238,7 +238,7 @@ int main(int argc, char **argv)
            outputfilecsv+= ntuais_filter.ReturnRange();
            outputfilecsv+="km.csv";
     std::ofstream output_file(outputfilecsv);
-    for(const auto &e : file_ship_array) output_file << e << "\n";    
+    for(const string &e : file_ship_array) output_file << e << "\n";    
 
     return 0;
 }
