@@ -41,7 +41,7 @@ int main(int argc, char **argv)
                     + ntuais_filter.ReturnDate().substr(5,2)
                     + ".csv";
         /*******************//*DATE*//******從時間篩資料************/
-    vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages of that date
+    vector<string> ship_list = ntuais_filter.ReadFile(csvfile);//RAW Messages on that date
 /*******************************************************************************/
     //Chop the String and Build the Ships and store them into a list;
     
@@ -153,7 +153,8 @@ int main(int argc, char **argv)
         string file_leaLON;
         string file_leaTIME;
         string file_bound; 
-        
+        //string range = ship_sameMMSI.begin()->distance; 
+
         if(ship_sameMMSI.size()==1){
             file_enterLAT = ship_sameMMSI.begin()->lat;
             cout << "file_entLAT:" << file_enterLAT << endl;
