@@ -231,6 +231,7 @@ double NTUAIS_filter::AvgSpeedCalculate(vector<struct Ship> ship)
     return avgspeed;
 }
 
+
 //-----------------------------------------------------------------------
 // ConvertTimeToSeconds
 

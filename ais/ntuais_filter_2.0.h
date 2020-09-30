@@ -26,7 +26,7 @@ struct Ship
             double ship_length;
             double ship_width;  
             double avgspeed; 
-
+            double dist;
 };
 
 struct ShipOutPut

@@ -56,7 +56,7 @@ int main(int argc, char **argv)
         ships.ship_length   = ship_length;
         ships.ship_width    = ship_width;
         double distant = ntuais_filter.CalculateDistance(ntuais_filter.ReturnStationLat(),ntuais_filter.ReturnStationLon(), ship_lat, ship_lon);
-        
+        ships.dist  = distant; 
         /******************//*RANGE*//******從範圍篩資料**存到ship_array*********/
         if(distant< stod(ntuais_filter.ReturnRange())) 
             ntuais_filter.ship_array.push_back(ships); 
@@ -72,8 +72,8 @@ int main(int argc, char **argv)
         }
         if(!same_ship)
             ntuais_filter.mmsi_list.push_back(ship.mmsi);
-        cout << ship.recordtime<< endl;
-        cout << "ship_mmsi:"<<ship.lat << endl;
+        cout << "time:"<<ship.recordtime<< endl;
+        cout << "dist:" << ship.dist<< endl;
     }
 
 /****************************從mmsi_list找相同mmsi的船存到ship_sameMMSI*******************/
@@ -89,7 +89,6 @@ int main(int argc, char **argv)
                 k!=ntuais_filter.ship_array.end(); k++){
             if(shipi== k->mmsi){
                 ship_sameMMSI.push_back(*k); 
-            //    cout << "push_back_sameMMSI"<<" " << shipi << endl;
             }
         }
         /*******************將ship_sameMMSI裡重疊的時間內的資料刪掉*****************/ 
@@ -116,8 +115,6 @@ int main(int argc, char **argv)
             else
                 j++; 
         }
-        //ntuais_filter.ShowSTL(ship_sameMMSI); 
-        //cout << ship_sameMMSI.size() << endl; 
        
         /***************************************************************************/
         //計算平均速度
@@ -139,11 +136,11 @@ int main(int argc, char **argv)
         cout << "file_mmsi:"<<file_mmsi << endl;
         string file_length = to_string(z->ship_length);
         cout << "file_length:"<<file_length<<endl;
-        string file_width = to_string(ship_sameMMSI.begin()->ship_width);
+        string file_width = to_string(z->ship_width);
         cout << "file_width:" << file_width<< endl;
         string file_avgspeed = to_string(avgspeed);
         cout << "file_avgspeed:"<<file_avgspeed<< endl;
-        string file_type = ship_sameMMSI.begin()->ship_type;
+        string file_type = z->ship_type;
         cout << "file_type:" << file_type << endl;
         cout << ship_sameMMSI.size() << endl;
         string file_enterLAT;
@@ -153,24 +150,28 @@ int main(int argc, char **argv)
         string file_leaLON;
         string file_leaTIME;
         string file_bound; 
-        //string range = ship_sameMMSI.begin()->distance; 
-
+        string file_dist;
+        string file_shortestdist= "";
+        string file_shortestdist_time="";
         if(ship_sameMMSI.size()==1){
-            file_enterLAT = ship_sameMMSI.begin()->lat;
+            file_enterLAT = z->lat;
             cout << "file_entLAT:" << file_enterLAT << endl;
-            file_enterLON = ship_sameMMSI.begin()->lon;
+            file_enterLON = z->lon;
             cout << "file_entLON:" << file_enterLON << endl;
             file_enterTIME = z->recordtime;
             cout << "file_enterTIME:" << file_enterTIME << endl;
-            file_leaLAT = ship_sameMMSI.begin()->lat;
-            file_leaLON = ship_sameMMSI.begin()->lon;
+            file_leaLAT = z->lat;
+            file_leaLON = z->lon;
             file_leaTIME= z->recordtime;
             file_bound  = "SingleAISMsg";
+            file_dist   = z->dist;
+            file_shortestdist = to_string(z->dist);
+            file_shortestdist_time = z->recordtime;
         }
         else if(ship_sameMMSI.size()>1){
-            file_enterLAT = ship_sameMMSI.begin()->lat;
+            file_enterLAT = z->lat;
             cout << "file_entLAT:" << file_enterLAT << endl;
-            file_enterLON = ship_sameMMSI.begin()->lon;
+            file_enterLON = z->lon;
             cout << "file_entLON:" << file_enterLON << endl;
             file_leaLAT = (z+(ship_sameMMSI.size()-1))->lat;
             cout << "file_leaLAT:" << file_leaLAT << endl;
@@ -187,6 +188,24 @@ int main(int argc, char **argv)
             if(stod(file_enterLAT)-stod(file_leaLAT)==0) 
                 file_bound = "East-West";
             cout << file_bound << endl; 
+            double shortest_dist = 0;
+            string time ="";
+            for(vector<struct Ship>::const_iterator i=ship_sameMMSI.begin(); i!= ship_sameMMSI.end(); i++){
+                bool    init = true;
+                while(init==true){
+                    shortest_dist = i->dist;
+                    time = i->recordtime;
+                    init    = false;
+                }
+                if(((i->dist)<shortest_dist) && (init==false)){
+                    shortest_dist = i->dist;
+                    time = i->recordtime;
+                }
+            }
+            file_shortestdist = to_string(shortest_dist);
+            file_shortestdist_time = time;
+            cout <<"shortest_dist:" << shortest_dist << endl; 
+            cout <<"time:"<< time << endl;
         }
         file_ship_array.push_back(file_mmsi     +","
                                 +file_length    +","
@@ -199,7 +218,10 @@ int main(int argc, char **argv)
                                 +file_leaLAT    +","
                                 +file_leaLON    +","
                                 +file_leaTIME   +","
-                                +file_bound);
+                                +file_bound     +","
+                                +file_shortestdist +","
+                                +file_shortestdist_time
+                                );
 
 /***********************************************************************************/
         ship_sameMMSI.clear(); 
