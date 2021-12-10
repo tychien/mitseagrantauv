@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
+from tkinter import ttk
+from datetime import datetime
 import tkinter as tk
 import gmplot
 import webbrowser
@@ -11,10 +13,11 @@ global entry_lon
 global entry_RAN
 global entry_FROM
 global entry_TO
+global entry_file
 
 
 class Gui(tk.Tk):
-    def browseFiles(self):
+    def browseFolders(self):
         folder_name = filedialog.askdirectory()
         self.entry_folder.delete(0, END)
         self.entry_folder.insert(0, folder_name) 
@@ -38,11 +41,21 @@ class Gui(tk.Tk):
         _from= self.entry_FROM.get()
         _to  = self.entry_TO.get()
         _dir = self.entry_folder.get()
-        
+     
         drawit = True
         if drawit:
             self.drawMap(_lat,_lon,_ran,_dir) 
             print(_lat, _lon, _ran, _from, _to, _dir)
+    
+     
+    def browseFile(self):
+        file_name = filedialog.askopenfilename()
+        self.entry_file.delete(0, END)
+        self.entry_file.insert(0, file_name) 
+
+   
+    
+    
     
     def __init__(self):
         
@@ -50,108 +63,183 @@ class Gui(tk.Tk):
         self.title("Select Folder")
         self.geometry("800x800")
         self.config(background = "black")
-
-        ###############################################################
-
-        label_POS = Label(self,
+        tabControl = ttk.Notebook(self)
+        tab1    = ttk.Frame(tabControl)
+        tab2    = ttk.Frame(tabControl)
+        tabControl.add(tab1,    text= "Read")
+        tabControl.add(tab2,    text= "Split File")
+        tabControl.pack(expand = 1, fill = "both")
+        ##TAB Read #############################################################
+        
+        label_POS = Label(tab1,
                         text    = "Position",
-                        bg      = "black",
-                        fg      = "white")
-        label_POS.grid(column = 1, row = 1, ipadx=5, pady=5, sticky=E)
+                        ).grid(column = 1, row = 1, ipadx=5, pady=5, sticky=E)
             #----------------------------------------------------------
-        label_lat = Label(self,
+        label_lat = Label(tab1,
                         text    = "Lat:",
-                        bg      = "black",
-                        fg      = "white")
-        label_lat.grid(column = 2, row = 1, ipadx =5 , pady = 5, sticky = W)
+                        ).grid(column = 2, 
+                                row = 1, 
+                                ipadx =5 , 
+                                pady = 5, 
+                                sticky = W)
             #----------------------------------------------------------
-        self.entry_lat = Entry(self, width = 10)
+        self.entry_lat = Entry(tab1, width = 10)
         self.entry_lat.insert(0, "24.04185")
         self.entry_lat.grid(column = 3, row = 1, ipadx = 5, pady = 5, sticky = W)
             #----------------------------------------------------------
-        label_lon = Label(self,
+        label_lon = Label(tab1,
                         text    = "Lon:",
-                        bg      = "black",
-                        fg      = "white")
-        label_lon.grid(column = 4, row = 1, ipadx =5 , pady = 5, sticky = W)
+                        ).grid(column = 4, 
+                                row = 1, 
+                                ipadx =5 , 
+                                pady = 5, 
+                                sticky = W)
             #----------------------------------------------------------
-        self.entry_lon = Entry(self, width = 10)
+        self.entry_lon = Entry(tab1, width = 10)
         self.entry_lon.insert(0, "120.33571")
         self.entry_lon.grid(column = 5, row = 1, ipadx = 5, pady = 5, sticky = W)
 
         #################################################################
 
-        label_RAN = Label(self,
+        label_RAN = Label(tab1,
                         text    = "Range(km)",
-                        bg      = "black",
-                        fg      = "white")
-        label_RAN.grid(column = 1, row = 2, ipadx=5, pady=5, sticky=E)
+                        ).grid(column = 1, 
+                                row = 2, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
             #--------------------------------------------------------------
-        self.entry_RAN = Entry(self, width = 20)
+        self.entry_RAN = Entry(tab1, width = 20)
         self.entry_RAN.insert(0, "15")
         self.entry_RAN.grid(column = 2, row = 2, columnspan = 3)
 
         ##################################################################
 
-        label_FROM = Label(self,
+        label_FROM = Label(tab1,
                         text    = "From(UTC)",
-                        bg      = "black",
-                        fg      = "white")
-        label_FROM.grid(column = 1, row = 3, ipadx=5, pady=5, sticky=E)
+                        ).grid(column = 1, 
+                                row = 3, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
             #------------------------------------------------------------
-        self.entry_FROM = Entry(self, width = 20)
+        self.entry_FROM = Entry(tab1, width = 20)
         self.entry_FROM.insert(0, "YYYY/MM/DD/hh/mm/ss")
         self.entry_FROM.grid(column = 2, row = 3, columnspan = 3)
         ####################################################################
 
-        label_TO = Label(self,
+        label_TO = Label(tab1,
                         text    = "To(UTC)",
-                        bg      = "black",
-                        fg      = "white")
-        label_TO.grid(column = 1, row = 4, ipadx=5, pady=5, sticky=E)
+                        ).grid(column = 1, 
+                                row = 4, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
             #---------------------------------------------------------------
-        self.entry_TO = Entry(self, width = 20)
+        self.entry_TO = Entry(tab1, width = 20)
         self.entry_TO.insert(0, "YYYY/MM/DD/hh/mm/ss")
         self.entry_TO.grid(column = 2, row = 4, columnspan = 3)
 
         #######################################################################
 
-        label_FOLDER = Label(self,
+        label_FOLDER = Label(tab1,
                         text    = "File Folder",
-                        bg      = "black",
-                        fg      = "white")
-        label_FOLDER.grid(column = 1, row = 5, ipadx=5, pady=5, sticky=E)
+                        ).grid(column = 1, 
+                                row = 5, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
 
             #------------------------------------------------------------------
 
-        self.entry_folder = Entry(self, width = 20)
+        self.entry_folder = Entry(tab1, width = 20)
         self.entry_folder.insert(0, "/folder/path")
         self.entry_folder.grid(column = 2, row = 5, columnspan = 3)
 
             #-------------------------------------------------------------------
 
-        button_exp = Button(self,
+        button_exp = Button(tab1,
                             text    = "Browse Folders",
                             bg      = "white",
                             fg      = "black",
-                            command = self.browseFiles)
-        button_exp.grid(column = 5, row = 5)
+                            command = self.browseFolders).grid(column = 5, row = 5)
 
         #########################################################################
 
-        button_exit = Button(self,
+        button_exit = Button(tab1,
                             text    = "Exit",
                             bg      = "red",
                             fg      = "white",
-                            command = exit)
-        button_exit.grid(column = 3, row = 6)
+                            command = exit).grid(column = 3, row = 6)
 
-        button_apply = Button(self,
+        button_apply = Button(tab1,
                             text    = "Apply",
                             bg      = 'blue',
                             fg      = 'white',
-                            command = self.getInput)
-        button_apply.grid(column = 1, row = 6)
+                            command = self.getInput).grid(column = 1, row = 6)
+
+        
+        ##TAB Split#######################################################################
+        label_split_FROM = Label(tab2,
+                        text    = "From(UTC)",
+                        ).grid(column = 1, 
+                                row = 3, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E
+                                )
+            #------------------------------------------------------------
+        self.entry_split_FROM = Entry(tab2, width = 20)
+        self.entry_split_FROM.grid(column = 2,row = 3, columnspan = 3)
+        self.entry_split_FROM.insert(0,"YYYY/MM/DD/hh/mm/ss")
+        ####################################################################
+
+        label_splt_TO = Label(tab2,
+                        text    = "To(UTC)",
+                        ).grid(column = 1, 
+                                row = 4, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E
+                                )
+            #---------------------------------------------------------------
+        self.entry_split_TO = Entry(tab2, width = 20)
+        self.entry_split_TO.grid(column = 2, row = 4, columnspan = 3)
+        self.entry_split_TO.insert(0, "YYYY/MM/DD/hh/mm/ss")
+
+        ########################################################################
+        label_FOLDER = Label(tab2,
+                        text    = "File",
+                        ).grid(column = 1, 
+                                row = 5, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
+
+            #------------------------------------------------------------------
+
+        self.entry_file = Entry(tab2, width = 20)
+        self.entry_file.insert(0, "/folder/path/file.csv")
+        self.entry_file.grid(column = 2, row = 5, columnspan = 3)
+
+            #-------------------------------------------------------------------
+
+        button_file = Button(tab2,
+                            text    = "Select File",
+                            bg      = "white",
+                            fg      = "black",
+                            command = self.browseFile
+                            ).grid(column = 5, 
+                                    row = 5)
+
+        button_exit = Button(tab2,
+                            text    = "Exit",
+                            bg      = "red",
+                            fg      = "white",
+                            command = exit
+                            ).grid(column = 3, 
+                                    row = 6)
+
 
 if __name__ == "__main__":
     gui = Gui()
