@@ -1,5 +1,5 @@
 from csv import DictReader
-
+from datetime import datetime
 class Copy():
 
     def __init__(self):
@@ -9,8 +9,13 @@ class Copy():
             counter = 0
             for row in csv_dict_reader:
                 counter += 1
-                if counter <=30:
+                if counter <=20:
                     print(row['MMSI'],row['Record_Time'])
+                    row_t = str(row['Record_Time'])
+                    print(row_t)
+                    row_d = datetime.strptime(row_t, '%Y-%m-%d %H:%M:%S')
+                    print(row_d.day)
+                    print('2021-08-31 23:54:22')
                 else:
                     break
 if __name__ == '__main__':

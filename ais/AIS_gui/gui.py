@@ -5,7 +5,7 @@ from datetime import datetime
 import tkinter as tk
 import gmplot
 import webbrowser
-
+import split as sp
 
 global entry_folder
 global entry_lat
@@ -14,7 +14,8 @@ global entry_RAN
 global entry_FROM
 global entry_TO
 global entry_file
-
+global entry_split_FROM
+global entry_split_TO
 
 class Gui(tk.Tk):
     def browseFolders(self):
@@ -54,14 +55,20 @@ class Gui(tk.Tk):
         self.entry_file.insert(0, file_name) 
 
    
-    
+    def testsplitByTime(self):
+        path = self.entry_file.get()
+        start_time = self.entry_split_FROM.get()
+        end_time = self.entry_split_TO.get()
+        print
+        sp.splitByTime(start_time, end_time, path)
     
     
     def __init__(self):
         
         super().__init__()
         self.title("Select Folder")
-        self.geometry("800x800")
+        self.geometry("800x400")
+        self.resizable(0,0)
         self.config(background = "black")
         tabControl = ttk.Notebook(self)
         tab1    = ttk.Frame(tabControl)
@@ -124,8 +131,17 @@ class Gui(tk.Tk):
                                 sticky=E)
             #------------------------------------------------------------
         self.entry_FROM = Entry(tab1, width = 20)
-        self.entry_FROM.insert(0, "YYYY/MM/DD/hh/mm/ss")
+        self.entry_FROM.insert(0, "2021-09-17 23:45:00")
         self.entry_FROM.grid(column = 2, row = 3, columnspan = 3)
+
+            #------------------------------------------------------------
+        label_FROM_eg   = Label(tab1, 
+                            text    = "format: YYYY-MM-DD HH:MM:SS",
+                            ).grid(column = 5, 
+                                    row = 3, 
+                                    ipadx = 5, 
+                                    pady = 5, 
+                                    sticky=W)
         ####################################################################
 
         label_TO = Label(tab1,
@@ -137,7 +153,7 @@ class Gui(tk.Tk):
                                 sticky=E)
             #---------------------------------------------------------------
         self.entry_TO = Entry(tab1, width = 20)
-        self.entry_TO.insert(0, "YYYY/MM/DD/hh/mm/ss")
+        self.entry_TO.insert(0, "2021-09-17 23:59:59")
         self.entry_TO.grid(column = 2, row = 4, columnspan = 3)
 
         #######################################################################
@@ -162,7 +178,12 @@ class Gui(tk.Tk):
                             text    = "Browse Folders",
                             bg      = "white",
                             fg      = "black",
-                            command = self.browseFolders).grid(column = 5, row = 5)
+                            command = self.browseFolders
+                            ).grid(column = 5, 
+                                    row = 5,
+                                    ipadx = 5,
+                                    pady    = 5,
+                                    sticky=W)
 
         #########################################################################
 
@@ -191,7 +212,14 @@ class Gui(tk.Tk):
             #------------------------------------------------------------
         self.entry_split_FROM = Entry(tab2, width = 20)
         self.entry_split_FROM.grid(column = 2,row = 3, columnspan = 3)
-        self.entry_split_FROM.insert(0,"YYYY/MM/DD/hh/mm/ss")
+        label_FROM_eg   = Label(tab2, 
+                            text    = "format: YYYY-MM-DD HH:MM:SS",
+                            ).grid(column = 5, 
+                                    row = 3, 
+                                    ipadx = 5, 
+                                    pady = 5, 
+                                    sticky=W)
+        self.entry_split_FROM.insert(0,"2021-09-01 01:25:00")
         ####################################################################
 
         label_splt_TO = Label(tab2,
@@ -205,10 +233,10 @@ class Gui(tk.Tk):
             #---------------------------------------------------------------
         self.entry_split_TO = Entry(tab2, width = 20)
         self.entry_split_TO.grid(column = 2, row = 4, columnspan = 3)
-        self.entry_split_TO.insert(0, "YYYY/MM/DD/hh/mm/ss")
+        self.entry_split_TO.insert(0, "2021-09-01 01:26:00")
 
         ########################################################################
-        label_FOLDER = Label(tab2,
+        label_FILE = Label(tab2,
                         text    = "File",
                         ).grid(column = 1, 
                                 row = 5, 
@@ -230,7 +258,19 @@ class Gui(tk.Tk):
                             fg      = "black",
                             command = self.browseFile
                             ).grid(column = 5, 
-                                    row = 5)
+                                    row = 5,
+                                    ipadx = 5,
+                                    pady  = 5,
+                                    sticky=W)
+
+        button_file = Button(tab2,
+                            text    = "Split File",
+                            bg      = "blue",
+                            fg      = "white",
+                            command = self.testsplitByTime
+                            ).grid(column = 1, 
+                                    row = 6,
+                                    )
 
         button_exit = Button(tab2,
                             text    = "Exit",
