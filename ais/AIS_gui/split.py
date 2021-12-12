@@ -1,5 +1,5 @@
 from datetime import datetime
-from csv import DictReader
+from csv import DictReader, DictWriter
 
 
 '''
@@ -15,14 +15,14 @@ def __init__():
     self.splitByTime(start_time, end_time, path)
 '''
 
-def splitByTime(start_time,end_time,path):
+def splitByTime(start_time,end_time,readpath,writepath):
     pre_day = None
     pre_hour = None
     dtformat    = '%Y-%m-%d %H:%M:%S'
     start_time_d= datetime.strptime(start_time,dtformat)
     end_time_d= datetime.strptime(end_time,dtformat)
     counter = 0
-    with open(path,'r') as read_obj:
+    with open(readpath,'r') as read_obj:
         csv_dict_reader = DictReader(read_obj)
         for row in csv_dict_reader:
             rec_time    = str(row['Record_Time'])
@@ -46,10 +46,17 @@ def splitByTime(start_time,end_time,path):
                             +':'+str(rec_time_d.second))
                     pre_hour = rec_time_d.hour
                     
-                if start_time_d < rec_time_d < end_time_d:
+                if start_time_d <= rec_time_d <= end_time_d:
                     counter += 1
+                    with open(writepath,'a') as wp:
+                        fieldnames  = row.keys()
+                        writer      = DictWriter(wp, fieldnames, delimiter=',')
+                        if counter == 1:
+                            writer.writeheader()
+                        writer.writerow(row)
                     print(counter, rec_time)
-                    if counter >20:
-                        break
+                    #if counter >20:
+                    #    print('new file saved in '+ writepath)
+                    #    break
 if __name__ == '__main__':
     split = splitByTime()

@@ -1,3 +1,4 @@
+from csv import DictWriter
 from csv import DictReader
 from datetime import datetime
 class Copy():
@@ -10,6 +11,14 @@ class Copy():
             for row in csv_dict_reader:
                 counter += 1
                 if counter <=20:
+                    with open('out_file.csv','a') as csv_file:
+                        fieldnames = row.keys()
+                        writer = DictWriter(csv_file, fieldnames, delimiter=',')
+                        if counter == 1:
+                            writer.writeheader()
+                        writer.writerow(row)
+                    
+                    
                     print(row['MMSI'],row['Record_Time'])
                     row_t = str(row['Record_Time'])
                     print(row_t)

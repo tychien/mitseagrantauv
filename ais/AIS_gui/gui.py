@@ -16,6 +16,7 @@ global entry_TO
 global entry_file
 global entry_split_FROM
 global entry_split_TO
+global entry_file_TO
 
 class Gui(tk.Tk):
     def browseFolders(self):
@@ -47,22 +48,29 @@ class Gui(tk.Tk):
         if drawit:
             self.drawMap(_lat,_lon,_ran,_dir) 
             print(_lat, _lon, _ran, _from, _to, _dir)
-    
      
     def browseFile(self):
         file_name = filedialog.askopenfilename()
         self.entry_file.delete(0, END)
         self.entry_file.insert(0, file_name) 
-
+    
+    def browseFile_TO(self):
+        file_name = filedialog.askopenfilename()
+        self.entry_file_TO.delete(0, END)
+        self.entry_file_TO.insert(0, file_name)
    
-    def testsplitByTime(self):
-        path = self.entry_file.get()
+    def splitByTime(self):
+        path_r = self.entry_file.get()
+        path_w = self.entry_file_TO.get()
         start_time = self.entry_split_FROM.get()
         end_time = self.entry_split_TO.get()
         print
-        sp.splitByTime(start_time, end_time, path)
+        sp.splitByTime(start_time, end_time, path_r, path_w)
     
-    
+    def splitByRange(self):
+        pass
+
+
     def __init__(self):
         
         super().__init__()
@@ -236,8 +244,8 @@ class Gui(tk.Tk):
         self.entry_split_TO.insert(0, "2021-09-01 01:26:00")
 
         ########################################################################
-        label_FILE = Label(tab2,
-                        text    = "File",
+        label_FILE_R = Label(tab2,
+                        text    = "From csv File",
                         ).grid(column = 1, 
                                 row = 5, 
                                 ipadx=5, 
@@ -251,6 +259,28 @@ class Gui(tk.Tk):
         self.entry_file.grid(column = 2, row = 5, columnspan = 3)
 
             #-------------------------------------------------------------------
+        ########################################################################
+        label_FILE_W = Label(tab2,
+                        text    = "New file path and name",
+                        ).grid(column = 1, 
+                                row = 6, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
+
+            #------------------------------------------------------------------
+
+        self.entry_file_TO = Entry(tab2, width = 20)
+        self.entry_file_TO.insert(0, "/folder/path/new.csv")
+        self.entry_file_TO.grid(column = 2, row = 6, columnspan = 3)
+
+            #-------------------------------------------------------------------
+
+
+
+    
+
+
 
         button_file = Button(tab2,
                             text    = "Select File",
@@ -261,15 +291,26 @@ class Gui(tk.Tk):
                                     row = 5,
                                     ipadx = 5,
                                     pady  = 5,
+                                    sticky=W) 
+
+        button_file = Button(tab2,
+                            text    = "Select File",
+                            bg      = "white",
+                            fg      = "black",
+                            command = self.browseFile_TO
+                            ).grid(column = 5, 
+                                    row = 6,
+                                    ipadx = 5,
+                                    pady  = 5,
                                     sticky=W)
 
         button_file = Button(tab2,
                             text    = "Split File",
                             bg      = "blue",
                             fg      = "white",
-                            command = self.testsplitByTime
+                            command = self.splitByTime
                             ).grid(column = 1, 
-                                    row = 6,
+                                    row = 7,
                                     )
 
         button_exit = Button(tab2,
@@ -278,7 +319,7 @@ class Gui(tk.Tk):
                             fg      = "white",
                             command = exit
                             ).grid(column = 3, 
-                                    row = 6)
+                                    row = 7)
 
 
 if __name__ == "__main__":
