@@ -41,6 +41,7 @@ def countShip(readpath):
 
         for date in datedict:
             for i in range(len(datedict[date])+1):
+                mmsi = datedict[date][i-1]['MMSI']
                 print(datedict[date][i-1]['Record_Time'])
 
 
