@@ -4,10 +4,11 @@ from datetime import datetime
 def countShip(readpath):
     datelist = []
     datedict = {}
-    mmsilist = []
+    countdict= {}
     shiplist = []
+    mmsilist = []
+    
     dtformat = '%Y-%m-%d %H:%M:%S'
-    count0914 = 0
     with open(readpath,'r') as read_obj:
         csv_dict_reader = DictReader(read_obj)
         for row in csv_dict_reader:
@@ -23,11 +24,6 @@ def countShip(readpath):
             else:
                 datelist.append(date)
 
-            if mmsi in mmsilist:
-                pass
-            else:
-                mmsilist.append(mmsi)
-
 
         datedict = {key:[] for key in datelist}
 
@@ -40,14 +36,18 @@ def countShip(readpath):
             datedict[date].append(ship)
 
         for date in datedict:
+            mmsilist.clear()
             for i in range(len(datedict[date])+1):
-                mmsi = datedict[date][i-1]['MMSI']
-                print(datedict[date][i-1]['Record_Time'])
-
-
-
-    #print((datedict['20210915'][19]['Record_Time']))
+                tmmsi = datedict[date][i-1]['MMSI']
+                if tmmsi in mmsilist:
+                    pass
+                else:
+                    mmsilist.append(tmmsi)
+            print(date, len(mmsilist))
+            countdict[date] = len(mmsilist)
+    
     print(len(shiplist))
+    print(countdict)
 
 if __name__ == '__main__':
-    countshipt = countShip(str(Path.home())+'/mitseagrantauv/ais/AIS_gui/CHe1_5K.csv')
+    countshipt = countShip(str(Path.home())+'/mitseagrantauv/ais/AIS_gui/CHn/CHn_10/CHn_50K_10.csv')
