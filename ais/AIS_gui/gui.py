@@ -235,13 +235,13 @@ class Gui(tk.Tk):
                                     sticky=W)
                                     
         #########################################################################
-
+        '''
         button_exit = Button(tab1,
                             text    = "Exit",
                             bg      = "red",
                             fg      = "white",
                             command = exit).grid(column = 3, row = 6)
-
+        '''
         button_apply = Button(tab1,
                             text    = "Apply",
                             bg      = 'blue',
@@ -347,7 +347,7 @@ class Gui(tk.Tk):
                             ).grid(column = 1, 
                                     row = 7,
                                     )
-
+        '''
         button_exit = Button(tab2,
                             text    = "Exit",
                             bg      = "red",
@@ -355,7 +355,7 @@ class Gui(tk.Tk):
                             command = exit
                             ).grid(column = 3, 
                                     row = 7)
-
+        '''
         #---TAB Counting Ships--------
         label_Count_R = Label(tab3,
                         text    = "Read File",
@@ -390,7 +390,7 @@ class Gui(tk.Tk):
                             ).grid(column = 1, 
                                     row = 3)
                     
-                            
+        '''                    
         button_exit = Button(tab3,
                             text    = "Exit",
                             bg      = "red",
@@ -398,7 +398,7 @@ class Gui(tk.Tk):
                             command = exit
                             ).grid(column = 3, 
                                     row = 3)
-
+        '''
 
 
 if __name__ == "__main__":
