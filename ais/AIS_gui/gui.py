@@ -7,6 +7,7 @@ import gmplot
 import webbrowser
 import timesplit as sp
 import rangesplit as rs
+import count as ct
 global entry_file_from_ran
 global entry_file_to_ran
 global entry_lat
@@ -18,6 +19,7 @@ global entry_file
 global entry_split_FROM
 global entry_split_TO
 global entry_file_TO
+global entry_file_counting
 
 class Gui(tk.Tk):
     def browseFile_from_ran(self):
@@ -75,6 +77,14 @@ class Gui(tk.Tk):
         print
         sp.splitByTime(start_time, end_time, path_r, path_w)
     
+    def browseFile_counting(self):
+        file_name = filedialog.askopenfilename()
+        self.entry_file_counting.delete(0, END)
+        self.entry_file_counting.insert(0, file_name)
+
+    def counting(self):
+        readfile = self.entry_file_counting.get()
+        ct.countShip(readfile)
 
     def __init__(self):
         
@@ -86,8 +96,10 @@ class Gui(tk.Tk):
         tabControl = ttk.Notebook(self)
         tab1    = ttk.Frame(tabControl)
         tab2    = ttk.Frame(tabControl)
+        tab3    = ttk.Frame(tabControl)
         tabControl.add(tab1,    text= "Split by Range")
         tabControl.add(tab2,    text= "Split by Time")
+        tabControl.add(tab3,    text= "Count Ships")
         tabControl.pack(expand = 1, fill = "both")
         ##TAB Range #############################################################
         
@@ -305,12 +317,6 @@ class Gui(tk.Tk):
 
             #-------------------------------------------------------------------
 
-
-
-    
-
-
-
         button_file = Button(tab2,
                             text    = "Select File",
                             bg      = "white",
@@ -349,6 +355,50 @@ class Gui(tk.Tk):
                             command = exit
                             ).grid(column = 3, 
                                     row = 7)
+
+        #---TAB Counting Ships--------
+        label_Count_R = Label(tab3,
+                        text    = "Read File",
+                        ).grid(column = 1, 
+                                row = 1, 
+                                ipadx=5, 
+                                pady=5, 
+                                sticky=E)
+
+            #------------------------------------------------------------------
+
+        self.entry_file_counting = Entry(tab3, width = 20)
+        self.entry_file_counting.insert(0, "/folder/path/file.csv")
+        self.entry_file_counting.grid(column = 2, row = 1, columnspan = 3)
+       
+        button_count_file = Button(tab3,
+                            text    = "Browse File",
+                            bg      = "white",
+                            fg      = "black",
+                            command = self.browseFile_counting
+                            ).grid(column = 5, 
+                                    row = 1,
+                                    ipadx = 5,
+                                    pady    = 5,
+                                    sticky=W)
+        
+        button_count = Button(tab3,
+                            text    = "Count",
+                            bg      = "Blue",
+                            fg      = "white",
+                            command = self.counting
+                            ).grid(column = 1, 
+                                    row = 3)
+                    
+                            
+        button_exit = Button(tab3,
+                            text    = "Exit",
+                            bg      = "red",
+                            fg      = "white",
+                            command = exit
+                            ).grid(column = 3, 
+                                    row = 3)
+
 
 
 if __name__ == "__main__":

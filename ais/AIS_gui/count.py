@@ -11,10 +11,14 @@ def countShip(readpath):
     dtformat = '%Y-%m-%d %H:%M:%S'
     with open(readpath,'r') as read_obj:
         csv_dict_reader = DictReader(read_obj)
+        
         for row in csv_dict_reader:
             shiplist.append(row)
             mmsi= row['MMSI']
-            record_time_d = datetime.strptime(row['Record_Time'],dtformat)
+            record_time   = row['Record_Time'][:19]
+            if record_time == '-1':
+                continue
+            record_time_d = datetime.strptime(record_time,dtformat)
             year    = record_time_d.year
             month   = record_time_d.month
             day     = record_time_d.day
@@ -23,18 +27,19 @@ def countShip(readpath):
                 pass
             else:
                 datelist.append(date)
-
-
         datedict = {key:[] for key in datelist}
-
+        
         for ship in shiplist:
-            record_time_b = datetime.strptime(ship['Record_Time'],dtformat)
+            record_time     = ship['Record_Time'][:19]
+            if record_time == '-1':
+                continue
+            record_time_b = datetime.strptime(record_time,dtformat)
             year    = record_time_b.year
             month   = record_time_b.month
             day     = record_time_b.day
             date    = str(year)+'{:02d}'.format(month)+'{:02d}'.format(day)
             datedict[date].append(ship)
-
+        
         for date in datedict:
             mmsilist.clear()
             for i in range(len(datedict[date])+1):
@@ -45,9 +50,9 @@ def countShip(readpath):
                     mmsilist.append(tmmsi)
             print(date, len(mmsilist))
             countdict[date] = len(mmsilist)
-    
     print(len(shiplist))
     print(countdict)
-
 if __name__ == '__main__':
-    countshipt = countShip(str(Path.home())+'/mitseagrantauv/ais/AIS_gui/CHn/CHn_10/CHn_50K_10.csv')
+    countshipt = countShip()
+    #countshipt = countShip(str(Path.home())+'/Downloads/201903test.csv')
+    #countshipt = countShip(str(Path.home())+'/mitseagrantauv/ais/AIS_gui/CHs/CHs_5K.csv')
