@@ -7,7 +7,7 @@ import gmplot
 import webbrowser
 import timesplit as sp
 import rangesplit as rs
-import count as ct
+import countWithoutMoving as ct
 global entry_file_from_ran
 global entry_file_to_ran
 global entry_lat
