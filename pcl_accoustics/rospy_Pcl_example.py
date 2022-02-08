@@ -13,8 +13,8 @@ def talker():
     for i in range(50):
         x = -13*i*i-4*i-1
         y = -4*i*i+3*i+2
-        listPoints.append(Point32(i, 0, 0.001*y))  #add type Point32 to listPoints. Point32(x,y,z) 
-        listPoints.append(Point32(i, 0, 0.001*x)) 
+        listPoints.append(Point32(i, 0, 0.001*y))  #add type Point32 to listPoints.  
+        listPoints.append(Point32(i, 0, 0.001*x))  #Point32(x,y,z)
     #listPoints = [Point32(1.0, 1.0, 1.5),Point32(2.0, 1.0, 2.5),Point32(3.0, 1.0, 3.5),Point32(4.0, 1.0, 4.5)]
     while not rospy.is_shutdown():
         rospy.loginfo("pcl_publish_example")
